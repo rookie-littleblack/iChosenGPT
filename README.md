@@ -1,6 +1,10 @@
 # ChosenGPT
 
 
+## iChosenGPT Board: A One-stop Web UI for Getting Started with iChosenGPT
+
+Launch **iChosenGPT Board** via `CUDA_VISIBLE_DEVICES=0 python factory/ichosengpt_board.py`. (multiple GPUs are not supported yet)
+
 
 ## Changelog
 
@@ -30,7 +34,7 @@
 >
 > For the "base" models, the `--template` argument can be chosen from `default`, `alpaca`, `vicuna` etc. But make sure to use the **corresponding template** for the "chat" models.
 
-Please refer to [template.py](src/llmtuner/extras/template.py) for a full list of models we supported.
+Please refer to [template.py](factory/llmtuner/extras/template.py) for a full list of models we supported.
 
 ## Supported Training Approaches
 
@@ -136,7 +140,7 @@ pip install https://github.com/jllllll/bitsandbytes-windows-webui/releases/downl
 #### Pre-Training
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
+CUDA_VISIBLE_DEVICES=0 python factory/ichosengpt_train.py \
     --stage pt \
     --model_name_or_path path_to_llama_model \
     --do_train \
@@ -159,7 +163,7 @@ CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
 #### Supervised Fine-Tuning
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
+CUDA_VISIBLE_DEVICES=0 python factory/ichosengpt_train.py \
     --stage sft \
     --model_name_or_path path_to_llama_model \
     --do_train \
@@ -183,7 +187,7 @@ CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
 #### Reward Modeling
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
+CUDA_VISIBLE_DEVICES=0 python factory/ichosengpt_train.py \
     --stage rm \
     --model_name_or_path path_to_llama_model \
     --do_train \
@@ -208,7 +212,7 @@ CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
 #### PPO Training
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
+CUDA_VISIBLE_DEVICES=0 python factory/ichosengpt_train.py \
     --stage ppo \
     --model_name_or_path path_to_llama_model \
     --do_train \
@@ -234,7 +238,7 @@ CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
 #### DPO Training
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
+CUDA_VISIBLE_DEVICES=0 python factory/ichosengpt_train.py \
     --stage dpo \
     --model_name_or_path path_to_llama_model \
     --do_train \
@@ -262,7 +266,7 @@ CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
 
 ```bash
 accelerate config # configure the environment
-accelerate launch src/train_bash.py # arguments (same as above)
+accelerate launch factory/ichosengpt_train.py # arguments (same as above)
 ```
 
 <details><summary>Example config for LoRA training</summary>
@@ -290,7 +294,7 @@ use_cpu: false
 #### Use DeepSpeed
 
 ```bash
-deepspeed --num_gpus 8 --master_port=9901 src/train_bash.py \
+deepspeed --num_gpus 8 --master_port=9901 factory/ichosengpt_train.py \
     --deepspeed ds_config.json \
     ... # arguments (same as above)
 ```
@@ -329,7 +333,7 @@ deepspeed --num_gpus 8 --master_port=9901 src/train_bash.py \
 ### Export model
 
 ```bash
-python src/export_model.py \
+python factory/export_model.py \
     --model_name_or_path path_to_llama_model \
     --template default \
     --finetuning_type lora \
@@ -340,7 +344,7 @@ python src/export_model.py \
 ### API Demo
 
 ```bash
-python src/api_demo.py \
+python factory/api_demo.py \
     --model_name_or_path path_to_llama_model \
     --template default \
     --finetuning_type lora \
@@ -353,17 +357,26 @@ python src/api_demo.py \
 ### CLI Demo
 
 ```bash
-python src/cli_demo.py \
+python factory/cli_demo.py \
     --model_name_or_path path_to_llama_model \
     --template default \
     --finetuning_type lora \
     --checkpoint_dir path_to_checkpoint
 ```
 
+```bash
+python factory/cli_demo.py \
+    --model_name_or_path path_to_llama_model \
+    --template default \
+    --finetuning_type lora \
+    --checkpoint_dir path_to_checkpoint
+```
+
+
 ### Web Demo
 
 ```bash
-python src/web_demo.py \
+python factory/web_demo.py \
     --model_name_or_path path_to_llama_model \
     --template default \
     --finetuning_type lora \
@@ -373,7 +386,7 @@ python src/web_demo.py \
 ### Evaluation
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 python src/evaluate.py \
+CUDA_VISIBLE_DEVICES=0 python factory/evaluate.py \
     --model_name_or_path path_to_llama_model \
     --finetuning_type lora \
     --checkpoint_dir path_to_checkpoint \
@@ -388,7 +401,7 @@ CUDA_VISIBLE_DEVICES=0 python src/evaluate.py \
 ### Predict
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
+CUDA_VISIBLE_DEVICES=0 python factory/ichosengpt_train.py \
     --stage sft \
     --model_name_or_path path_to_llama_model \
     --do_predict \
@@ -405,13 +418,6 @@ CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
 > [!NOTE]
 > We recommend using `--per_device_eval_batch_size=1` and `--max_target_length 128` at 4/8-bit predict.
 
-## Projects using LLaMA Factory
-
-- **[StarWhisper](https://github.com/Yu-Yang-Li/StarWhisper)**: A large language model for Astronomy, based on ChatGLM2-6B and Qwen-14B.
-- **[DISC-LawLLM](https://github.com/FudanDISC/DISC-LawLLM)**: A large language model specialized in Chinese legal domain, based on Baichuan-13B, is capable of retrieving and reasoning on legal knowledge.
-- **[Sunsimiao](https://github.com/thomas-yanxin/Sunsimiao)**: A large language model specialized in Chinese medical domain, based on Baichuan-7B and ChatGLM-6B.
-- **[CareGPT](https://github.com/WangRongsheng/CareGPT)**: A series of large language models for Chinese medical domain, based on LLaMA2-7B and Baichuan-13B.
-
 ## License
 
 This repository is licensed under the [Apache-2.0 License](LICENSE).
@@ -423,17 +429,17 @@ Please follow the model licenses to use the corresponding model weights: [LLaMA]
 If this work is helpful, please kindly cite as:
 
 ```bibtex
-@Misc{llama-factory,
-  title = {LLaMA Factory},
-  author = {hiyouga},
-  howpublished = {\url{https://github.com/hiyouga/LLaMA-Factory}},
+@Misc{iChosenGPT,
+  title = {iChosenGPT},
+  author = {Quan Xu},
+  howpublished = {\url{https://github.com/rookie-littleblack/iChosenGPT}},
   year = {2023}
 }
 ```
 
 ## Acknowledgement
 
-This repo benefits from [PEFT](https://github.com/huggingface/peft), [QLoRA](https://github.com/artidoro/qlora) and [FastChat](https://github.com/lm-sys/FastChat). Thanks for their wonderful works.
+This repo benefits from [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory), [ChatGLM3](https://github.com/THUDM/ChatGLM3), [Llama2](https://github.com/facebookresearch/llama) and [LLaVA](https://github.com/haotian-liu/LLaVA). Thanks for their wonderful works.
 
 ## Star History
 

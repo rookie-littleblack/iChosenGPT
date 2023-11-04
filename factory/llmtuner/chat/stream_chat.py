@@ -84,6 +84,8 @@ class ChatModel:
         generate_output = self.model.generate(**gen_kwargs)
         response_ids = generate_output[:, prompt_length:]
         response = self.tokenizer.batch_decode(response_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True)
+        print(f"---> in chat() for query '{query}'..")
+        print(f"---> in chat() response '{response}'..")
         response_length = 0
         for i in range(len(response_ids)):
             eos_index = (response_ids[i] == self.tokenizer.eos_token_id).nonzero()
@@ -103,7 +105,9 @@ class ChatModel:
         streamer = TextIteratorStreamer(self.tokenizer, timeout=60.0, skip_prompt=True, skip_special_tokens=True)
         gen_kwargs["streamer"] = streamer
 
+        print(f"======> [QX] in '/work/20231103-0935_ChosenGPT/factory/llmtuner/chat/stream_chat.py', def stream_chat(), gen_kwargs: {str(gen_kwargs)}..")
         thread = Thread(target=self.model.generate, kwargs=gen_kwargs)
         thread.start()
+        print(f"---> in stream_chat() for query '{query}'..")
 
         yield from streamer

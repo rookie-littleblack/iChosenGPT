@@ -86,10 +86,20 @@ class WebChatModel(ChatModel):
     ) -> Generator[Tuple[List[Tuple[str, str]], List[Tuple[str, str]]], None, None]:
         chatbot.append([query, ""])
         response = ""
+        print(f"======> [QX] in '/work/20231103-0935_ChosenGPT/factory/llmtuner/webui/chatter.py', predict for '{query}'..")
         for new_text in self.stream_chat(
             query, history, system, max_new_tokens=max_new_tokens, top_p=top_p, temperature=temperature
         ):
+            print(f"======> [QX] in '/work/20231103-0935_ChosenGPT/factory/llmtuner/webui/chatter.py', new_text: '{new_text}'..")
             response += new_text
+            response = response.replace("ChatGLM3-6B", "iChosenGPT（中文名：臻慧聊）")
+            response = response.replace("清华大学 KEG 实验室", "求臻医学科技（浙江）有限公司")
+            response = response.replace("清华大学KEG实验室", "求臻医学科技（浙江）有限公司")
+            response = response.replace("Tsinghua University KEG Lab", "ChosenMed Technology")
+            response = response.replace("智谱 AI 公司", "北京臻知临床智能有限公司")
+            response = response.replace("智谱AI公司", "北京臻知临床智能有限公司")
+            response = response.replace("Zhipu AI Company", "iChosen BioAI")
+            response = response.replace("GLM2", "iChosenGPT-LM")
             new_history = history + [(query, response)]
             chatbot[-1] = [query, self.postprocess(response)]
             yield chatbot, new_history

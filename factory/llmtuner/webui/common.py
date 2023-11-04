@@ -12,11 +12,12 @@ from transformers.utils import (
 )
 
 from llmtuner.extras.constants import DEFAULT_MODULE, DEFAULT_TEMPLATE, SUPPORTED_MODELS, TRAINING_STAGES
+from datetime import datetime
 
 
 DEFAULT_CACHE_DIR = "cache"
 DEFAULT_DATA_DIR = "data"
-DEFAULT_SAVE_DIR = "saves"
+DEFAULT_SAVE_DIR = "out"
 USER_CONFIG = "user.config"
 DATA_CONFIG = "dataset_info.json"
 CKPT_NAMES = [
@@ -31,6 +32,8 @@ CKPT_NAMES = [
 
 def get_save_dir(*args) -> os.PathLike:
     return os.path.join(DEFAULT_SAVE_DIR, *args)
+    # save_dir = DEFAULT_SAVE_DIR + os.path.sep + datetime.now().strftime("%Y%m%d-%H%M")
+    # return os.path.join(save_dir, *args)
 
 
 def get_config_path() -> os.PathLike:

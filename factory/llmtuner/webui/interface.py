@@ -20,7 +20,7 @@ require_version("gradio==3.50.2", "To fix: pip install gradio==3.50.2")
 def create_ui() -> gr.Blocks:
     engine = Engine(pure_chat=False)
 
-    with gr.Blocks(title="iChosenGPT", css=CSS) as demo:
+    with gr.Blocks(title="iChosenGPT: Leverage the power of large models to fuel advancements in biomedical research.", css=CSS) as demo:
         engine.manager.all_elems["top"] = create_top()
         lang: "gr.Dropdown" = engine.manager.get_elem("top.lang")
 

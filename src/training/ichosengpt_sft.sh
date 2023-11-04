@@ -21,7 +21,7 @@ QX_PT_GLM3_TEST02_PTOUT=/work/20230915-0759_GPT/20230920-1326_OS_Projects/202311
 QX_PT_GLM3_TEST02_MDOUT=${QX_PT_GLM3_TEST02_PTOUT}-model
 
 # Pre-training!
-accelerate launch src/train_bash.py \
+accelerate launch src/ichosengpt_train.py \
 --stage sft \
 --model_name_or_path $QX_PT_GLM3_TEST02_MODEL \
 --do_train \

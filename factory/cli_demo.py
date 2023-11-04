@@ -29,6 +29,7 @@ def main():
         response = ""
         for new_text in chat_model.stream_chat(query, history):
             print(new_text, end="", flush=True)
+            #print("---")
             response += new_text
         print()
 
