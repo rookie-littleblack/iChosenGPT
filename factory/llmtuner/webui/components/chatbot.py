@@ -1,4 +1,5 @@
 import gradio as gr
+import os
 from typing import TYPE_CHECKING, Dict, Optional, Tuple
 
 if TYPE_CHECKING:
@@ -14,7 +15,11 @@ def create_chat_box(
     elem_dict = dict()
 
     with gr.Box(visible=visible) as chat_box:
-        chatbot = gr.Chatbot()
+        chatbot = gr.Chatbot(
+            label='iChosenGPT',
+            bubble_full_width=False,
+            avatar_images=((os.path.join(os.path.dirname(__file__), "Avatar2.png")), (os.path.join(os.path.dirname(__file__), "Avatar.jpg")))
+        )
 
         with gr.Row():
             with gr.Column(scale=4):

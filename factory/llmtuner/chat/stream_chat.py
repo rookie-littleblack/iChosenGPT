@@ -105,9 +105,9 @@ class ChatModel:
         streamer = TextIteratorStreamer(self.tokenizer, timeout=60.0, skip_prompt=True, skip_special_tokens=True)
         gen_kwargs["streamer"] = streamer
 
-        print(f"======> [QX] in '/work/20231103-0935_ChosenGPT/factory/llmtuner/chat/stream_chat.py', def stream_chat(), gen_kwargs: {str(gen_kwargs)}..")
+        #print(f"======> [QX] in '/work/20231103-0935_ChosenGPT/factory/llmtuner/chat/stream_chat.py', def stream_chat(), gen_kwargs: {str(gen_kwargs)}..")
         thread = Thread(target=self.model.generate, kwargs=gen_kwargs)
         thread.start()
-        print(f"---> in stream_chat() for query '{query}'..")
+        #print(f"---> in stream_chat() for query '{query}'..")
 
         yield from streamer  # return iteratable object: TextIteratorStreamer (QX, 2023-11-04)!

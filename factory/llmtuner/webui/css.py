@@ -15,4 +15,17 @@ CSS = r"""
 .dark .modal-box {
   border: 2px solid white !important;
 }
+
+.user{
+  background-color: #bafff5 !important;
+  border-color: #bafff5 !important;
+}
+.bot{
+  background-color: #fff4ca !important;
+  border-color: #fff4ca !important;
+}
+
+footer{
+  display: none !important;
+}
 """

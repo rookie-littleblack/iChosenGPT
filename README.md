@@ -1,4 +1,4 @@
-# ChosenGPT
+# **iChosenGPT**: Leverage the power of large models to fuel advancements in biomedical research.
 
 
 ## iChosenGPT Board: A One-stop Web UI for Getting Started with iChosenGPT
@@ -357,30 +357,36 @@ python factory/api_demo.py \
 ### CLI Demo
 
 ```bash
-python factory/cli_demo.py \
-    --model_name_or_path path_to_llama_model \
-    --template default \
-    --finetuning_type lora \
-    --checkpoint_dir path_to_checkpoint
+python factory/ichosengpt_cli.py \
+--model_name_or_path path_to_llama_model \
+--template default \
+--finetuning_type lora \
+--checkpoint_dir path_to_checkpoint
 ```
 
 ```bash
-python factory/cli_demo.py \
-    --model_name_or_path path_to_llama_model \
-    --template default \
-    --finetuning_type lora \
-    --checkpoint_dir path_to_checkpoint
+# A real simple demo
+python factory/ichosengpt_cli.py \
+--model_name_or_path /work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B \
+--template chatglm3
 ```
 
 
 ### Web Demo
 
 ```bash
-python factory/web_demo.py \
-    --model_name_or_path path_to_llama_model \
-    --template default \
-    --finetuning_type lora \
-    --checkpoint_dir path_to_checkpoint
+python factory/ichosengpt_web_gradio.py \
+--model_name_or_path path_to_llama_model \
+--template default \
+--finetuning_type lora \
+--checkpoint_dir path_to_checkpoint
+```
+
+```bash
+# A real simple demo
+python factory/ichosengpt_web_gradio.py \
+--model_name_or_path /work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B \
+--template chatglm3
 ```
 
 ### Evaluation

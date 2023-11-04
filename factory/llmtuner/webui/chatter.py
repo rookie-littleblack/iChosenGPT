@@ -88,11 +88,11 @@ class WebChatModel(ChatModel):
     ) -> Generator[Tuple[List[Tuple[str, str]], List[Tuple[str, str]]], None, None]:
         chatbot.append([query, ""])
         response = ""
-        print(f"======> [QX] in '/work/20231103-0935_ChosenGPT/factory/llmtuner/webui/chatter.py', predict for '{query}'..")
+        #print(f"======> [QX] in '/work/20231103-0935_ChosenGPT/factory/llmtuner/webui/chatter.py', predict for '{query}'..")
         for new_text in self.stream_chat(
             query, history, system, max_new_tokens=max_new_tokens, top_p=top_p, temperature=temperature
         ):
-            print(f"======> [QX] in '/work/20231103-0935_ChosenGPT/factory/llmtuner/webui/chatter.py', new_text: '{new_text}'..")
+            #print(f"======> [QX] in '/work/20231103-0935_ChosenGPT/factory/llmtuner/webui/chatter.py', new_text: '{new_text}'..")
             response += new_text
             response = rep_res(response)
             new_history = history + [(query, response)]
