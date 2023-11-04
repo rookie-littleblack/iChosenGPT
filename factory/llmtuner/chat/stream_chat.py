@@ -110,4 +110,4 @@ class ChatModel:
         thread.start()
         print(f"---> in stream_chat() for query '{query}'..")
 
-        yield from streamer
+        yield from streamer  # return iteratable object: TextIteratorStreamer (QX, 2023-11-04)!
