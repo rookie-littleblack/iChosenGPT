@@ -16,13 +16,21 @@ CSS = r"""
   border: 2px solid white !important;
 }
 
+.avatar-container{
+  box-shadow: 2px 2px 5px #d1d1d1 !important;
+  border-radius: 50% !important;
+  width: 55px !important;
+  height: 55px !important;
+}
 .user{
   background-color: #bafff5 !important;
   border-color: #bafff5 !important;
+  box-shadow: 2px 2px 5px #d1d1d1 !important;
 }
 .bot{
   background-color: #fff4ca !important;
   border-color: #fff4ca !important;
+  box-shadow: 2px 2px 5px #d1d1d1 !important;
 }
 
 footer{
