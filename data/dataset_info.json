@@ -1,0 +1,33 @@
+{
+  "ichosengpt_corpus_text_chosenmed": {
+    "file_name": "/work/20230921-1745_Dataset/20231016-1119_Dataset04_qx-construct-chosengpt-01/qx_corpus_chosenmed_qa_for_glm3.json"
+  },
+  "ichosengpt_corpus_text_shibing624_medical_pretrain_train_encyclopedia": {
+    "file_name": "/work/20230921-1745_Dataset/20231102-2345_Dataset06-shibing624-medical/format_LLaMA_Factory_lyy/pretrain/train_encyclopedia.json.txt",
+    "columns": {
+      "prompt": "text",
+      "query": "",
+      "response": "",
+      "history": ""
+    }
+  },
+  "ichosengpt_corpus_text_dengling_newsreport_20231103": {
+    "file_name": "/work/20230921-1745_Dataset/20231103-1822_Dataset07-dengling-newsreport/chosenmed_dengling_20231103.txt",
+    "columns": {
+      "prompt": "text",
+      "query": "",
+      "response": "",
+      "history": ""
+    }
+  },
+  "ichosengpt_corpus_json_chosenmed": {
+    "file_name": "sharegpt_zh_27k.json",
+    "file_sha1": "baf766bcf3d61f1b783728c14ce695af57a86e6e",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output",
+      "history": "history"
+    }
+  }
+}
