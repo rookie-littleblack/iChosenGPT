@@ -437,4 +437,4 @@ This repo benefits from [PEFT](https://github.com/huggingface/peft), [QLoRA](htt
 
 ## Star History
 
-![Star History Chart](https://api.star-history.com/svg?repos=hiyouga/LLaMA-Factory&type=Date)
+![Star History Chart](https://api.star-history.com/svg?repos=rookie-littleblack/iChosenGPT&type=Date)
