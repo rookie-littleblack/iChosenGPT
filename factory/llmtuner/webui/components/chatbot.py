@@ -15,24 +15,25 @@ def create_chat_box(
     elem_dict = dict()
 
     with gr.Box(visible=visible) as chat_box:
-        chatbot = gr.Chatbot(
-            label='iChosenGPT',
-            bubble_full_width=False,
-            avatar_images=((os.path.join(os.path.dirname(__file__), "Avatar2.png")), (os.path.join(os.path.dirname(__file__), "Avatar.jpg")))
-        )
+        with gr.Group():  # Quan Xu, 2023-11-05!
+            chatbot = gr.Chatbot(
+                label='iChosenGPT',
+                bubble_full_width=False,
+                avatar_images=((os.path.join(os.path.dirname(__file__), "Avatar2.png")), (os.path.join(os.path.dirname(__file__), "Avatar.jpg")))
+            )
 
-        with gr.Row():
-            with gr.Column(scale=4):
-                system = gr.Textbox(show_label=False)
-                query = gr.Textbox(show_label=False, lines=8)
-                submit_btn = gr.Button(variant="primary")
+            with gr.Row():
+                with gr.Column(scale=4):
+                    system = gr.Textbox(show_label=False)
+                    query = gr.Textbox(show_label=False, lines=8)
+                    submit_btn = gr.Button(variant="primary")
 
-            with gr.Column(scale=1):
-                clear_btn = gr.Button()
-                gen_kwargs = engine.chatter.generating_args
-                max_new_tokens = gr.Slider(10, 2048, value=gen_kwargs.max_new_tokens, step=1)
-                top_p = gr.Slider(0.01, 1, value=gen_kwargs.top_p, step=0.01)
-                temperature = gr.Slider(0.01, 1.5, value=gen_kwargs.temperature, step=0.01)
+                with gr.Column(scale=1):
+                    clear_btn = gr.Button()
+                    gen_kwargs = engine.chatter.generating_args
+                    max_new_tokens = gr.Slider(10, 2048, value=gen_kwargs.max_new_tokens, step=1)
+                    top_p = gr.Slider(0.01, 1, value=gen_kwargs.top_p, step=0.01)
+                    temperature = gr.Slider(0.01, 1.5, value=gen_kwargs.temperature, step=0.01)
 
     elem_dict.update(dict(
         system=system, query=query, submit_btn=submit_btn, clear_btn=clear_btn,

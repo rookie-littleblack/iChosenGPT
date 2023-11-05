@@ -44,6 +44,10 @@ if [ -z "${ICHOSEN_PT_CUDA_VISIB}" ]; then
     echo "Error: Environment variable 'ICHOSEN_PT_CUDA_VISIB' is not set. Default value '0' is set."
     ICHOSEN_PT_CUDA_VISIB=0
 fi
+if [ -z "${ICHOSEN_PT_MODEL_PORT}" ]; then
+    echo "Warning: Environment variable 'ICHOSEN_PT_MODEL_PORT' is not set. Default value '6724' is set."
+    ICHOSEN_PT_MODEL_PORT=6724
+fi
 
 
 # Variables!
