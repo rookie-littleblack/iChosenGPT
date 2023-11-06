@@ -41,6 +41,7 @@ with st.sidebar:
     )
 
 st.title("iChosenGPT")
+st.write("Leverage the power of large models to fuel advancements in biomedical research.")
 
 prompt_text = st.chat_input(
     'Chat with iChosenGPT!',

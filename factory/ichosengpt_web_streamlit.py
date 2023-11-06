@@ -13,15 +13,30 @@ st.set_page_config(
 
 # 设置为模型ID或本地文件夹路径
 model_path = os.environ.get('ICHOSEN_WEB_MODEL', '/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B')
-print(f"---> model_path: '{model_path}'")
+cuda_visible_devices = os.environ.get("CUDA_VISIBLE_DEVICES")
+print(f"---> model_path: '{model_path}', cuda_visible_devices: {cuda_visible_devices}")
+num_gpus = 1
+if cuda_visible_devices is not None:
+    gpu_ids = [gpu_id for gpu_id in cuda_visible_devices.split(",") if gpu_id.strip()]
+    num_gpus = len(gpu_ids)
+    print(f"---> num_gpus: {num_gpus}, GPU IDs: {gpu_ids}")
+else:
+    print("---> CUDA_VISIBLE_DEVICES is not set!")
+
 
 @st.cache_resource
 def get_model():
     tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
-    model = AutoModel.from_pretrained(model_path, trust_remote_code=True).cuda()
-    # 多显卡支持,使用下面两行代替上面一行,将num_gpus改为你实际的显卡数量
-    # from utils import load_model_on_gpus
-    # model = load_model_on_gpus("/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B", num_gpus=2)
+
+    if num_gpus == 1:
+        print(f"---> Using single GPU...")
+        model = AutoModel.from_pretrained(model_path, trust_remote_code=True).cuda()
+    else:
+        print(f"---> Using multiple GPUs: {num_gpus}...")
+        # 多显卡支持,使用下面两行代替上面一行,将num_gpus改为你实际的显卡数量
+        from models.chatglm3.utils import load_model_on_gpus
+        model = load_model_on_gpus(model_path, num_gpus=num_gpus)
+
     model = model.eval()
     return tokenizer, model
 

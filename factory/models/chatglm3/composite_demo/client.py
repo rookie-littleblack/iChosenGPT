@@ -14,7 +14,16 @@ from models.chatglm3.composite_demo.conversation import Conversation
 
 TOOL_PROMPT = 'Answer the following questions as best as you can. You have access to the following tools:'
 
-MODEL_PATH = os.environ.get('MODEL_PATH', '/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B')
+MODEL_PATH = os.environ.get('ICHOSEN_TOOLS_MODEL', '/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B')
+cuda_visible_devices = os.environ.get("CUDA_VISIBLE_DEVICES")
+print(f"---> MODEL_PATH: '{MODEL_PATH}', cuda_visible_devices: {cuda_visible_devices}")
+num_gpus = 1
+if cuda_visible_devices is not None:
+    gpu_ids = [gpu_id for gpu_id in cuda_visible_devices.split(",") if gpu_id.strip()]
+    num_gpus = len(gpu_ids)
+    print(f"---> num_gpus: {num_gpus}, GPU IDs: {gpu_ids}")
+else:
+    print("---> CUDA_VISIBLE_DEVICES is not set!")
 
 
 @st.cache_resource
@@ -89,13 +98,26 @@ class HFClient(Client):
     def __init__(self, model_path: str):
         self.model_path = model_path
         self.tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
-        print("========== in class HFClient(Client), before model load...")
-        self.model = AutoModel.from_pretrained(model_path, trust_remote_code=True).to(
-            'cuda' if torch.cuda.is_available() else
-            'mps' if torch.backends.mps.is_available() else
-            'cpu'
-        )
-        print("========== in class HFClient(Client), after model load...")
+        print(f"==========> in class HFClient(Client), before loading model '{model_path}'...")
+        
+        ### V1
+        # self.model = AutoModel.from_pretrained(model_path, trust_remote_code=True).to(
+        #     'cuda' if torch.cuda.is_available() else
+        #     'mps' if torch.backends.mps.is_available() else
+        #     'cpu'
+        # )
+
+        ### V2
+        if num_gpus == 1:
+            print(f"---> Using single GPU...")
+            self.model = AutoModel.from_pretrained(model_path, trust_remote_code=True).cuda()
+        else:
+            print(f"---> Using multiple GPUs: {num_gpus}...")
+            # 多显卡支持,使用下面两行代替上面一行,将num_gpus改为你实际的显卡数量
+            from models.chatglm3.utils import load_model_on_gpus
+            self.model = load_model_on_gpus(model_path, num_gpus=num_gpus)
+
+        print(f"==========> in class HFClient(Client), after '{model_path}' model loaded...")
         self.model = self.model.eval()
 
     def generate_stream(self,
