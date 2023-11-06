@@ -41,13 +41,13 @@ export ICHOSEN_MODEL_TEMP=chatglm3
 cd $ICHOSEN_ROOT_PATH
 
 
-# ##########################################
-# ### Initiate Board - gradio version!
-# export ICHOSEN_BOARD_CUDA_VISIB="4,5,6,7"
-# export ICHOSEN_BOARD_WPORT=6721
-# export ICHOSEN_BOARD_SCRIPT=${ICHOSEN_ROOT_PATH}/factory/ichosengpt_board.py
+##########################################
+### Initiate Board - gradio version!
+export ICHOSEN_BOARD_CUDA_VISIB="4,5,6,7"
+export ICHOSEN_BOARD_WPORT=6721
+export ICHOSEN_BOARD_SCRIPT=${ICHOSEN_ROOT_PATH}/factory/ichosengpt_board.py
 
-# CUDA_VISIBLE_DEVICES=${ICHOSEN_BOARD_CUDA_VISIB} python ${ICHOSEN_BOARD_SCRIPT}
+CUDA_VISIBLE_DEVICES=${ICHOSEN_BOARD_CUDA_VISIB} python ${ICHOSEN_BOARD_SCRIPT}
 
 
 # ##########################################
@@ -69,17 +69,17 @@ cd $ICHOSEN_ROOT_PATH
 # #--checkpoint_dir ${ICHOSEN_GRA_MODEL_CKPT}
 
 
-##########################################
-### Initiate Web - streamlit version!
-# For ChatGLM3!
-export ICHOSEN_WEB_MODEL_PATH=${ICHOSEN_MODEL_CHAT}
-export ICHOSEN_WEB_CUDA_VISIB="4,5,6,7"
-export ICHOSEN_WEB_MODEL_PORT=6723
+# ##########################################
+# ### Initiate Web - streamlit version!
+# # For ChatGLM3!
+# export ICHOSEN_WEB_MODEL_PATH=${ICHOSEN_MODEL_CHAT}
+# export ICHOSEN_WEB_CUDA_VISIB="4,5,6,7"
+# export ICHOSEN_WEB_MODEL_PORT=6723
 
-export ICHOSEN_WEB_MODEL=${ICHOSEN_WEB_MODEL_PATH}
-export ICHOSEN_WEB_SCRIPT=${ICHOSEN_ROOT_PATH}/factory/ichosengpt_web_streamlit.py
+# export ICHOSEN_WEB_MODEL=${ICHOSEN_WEB_MODEL_PATH}
+# export ICHOSEN_WEB_SCRIPT=${ICHOSEN_ROOT_PATH}/factory/ichosengpt_web_streamlit.py
 
-CUDA_VISIBLE_DEVICES=${ICHOSEN_WEB_CUDA_VISIB} streamlit run ${ICHOSEN_WEB_SCRIPT} --server.port ${ICHOSEN_WEB_MODEL_PORT}
+# CUDA_VISIBLE_DEVICES=${ICHOSEN_WEB_CUDA_VISIB} streamlit run ${ICHOSEN_WEB_SCRIPT} --server.port ${ICHOSEN_WEB_MODEL_PORT}
 
 
 # ##########################################
@@ -96,13 +96,14 @@ CUDA_VISIBLE_DEVICES=${ICHOSEN_WEB_CUDA_VISIB} streamlit run ${ICHOSEN_WEB_SCRIP
 
 
 # ##########################################
-# ### Pre-Training LLM!
+# ### Pre-Training LLM - Single GPU!
 # export ICHOSEN_PT_MODEL_PATH=${ICHOSEN_MODEL_CHAT}
 # export ICHOSEN_PT_MODEL_TEMP=${ICHOSEN_MODEL_TEMP}
 # export ICHOSEN_PT_CUDA_VISIB=7
-# #export ICHOSEN_PT_DATAS_NAME=ichosengpt_corpus_text_chosenmed
-# export ICHOSEN_PT_DATAS_NAME=ichosengpt_corpus_text_dengling_newsreport_20231103
+# export ICHOSEN_PT_DATAS_NAME=ichosengpt_corpus_text_chosenmed
+# #export ICHOSEN_PT_DATAS_NAME=ichosengpt_corpus_text_dengling_newsreport_20231103
 # export ICHOSEN_PT_MODEL_PORT=6725
+# export ICHOSEN_PT_NUM_EPOCHS=3.0
 
 # sh src/training/ichosengpt_pt.sh
 

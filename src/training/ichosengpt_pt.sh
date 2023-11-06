@@ -12,6 +12,7 @@
 #             export ICHOSEN_PT_CUDA_VISIB=XXX    # CUDA_VISIBLE_DEVICES
 #             export ICHOSEN_PT_DATAS_NAME=XXX    # Dataset name
 #             export ICHOSEN_PT_MODEL_PORT=XXX    # Web port
+#             export ICHOSEN_PT_NUM_EPOCHS=XXX    # Number of epoches!
 #############################################################################################
 #!/bin/bash
 
@@ -48,6 +49,10 @@ if [ -z "${ICHOSEN_PT_MODEL_PORT}" ]; then
     echo "Warning: Environment variable 'ICHOSEN_PT_MODEL_PORT' is not set. Default value '6724' is set."
     ICHOSEN_PT_MODEL_PORT=6724
 fi
+if [ -z "${ICHOSEN_PT_NUM_EPOCHS}" ]; then
+    echo "Warning: Environment variable 'ICHOSEN_PT_NUM_EPOCHS' is not set. Default value '3.0' is set."
+    ICHOSEN_PT_NUM_EPOCHS=3.0
+fi
 
 
 # Variables!
@@ -59,7 +64,7 @@ ICHOSEN_PT_ODIR_MODEL=${ICHOSEN_PT_ODIR_CKPOT}_model
 ICHOSEN_PT_SCRIPT_TRAIN=${ICHOSEN_ROOT_PATH}/factory/ichosengpt_train.py
 ICHOSEN_PT_SCRIPT_EXPOT=${ICHOSEN_ROOT_PATH}/factory/export_model.py
 
-ICHOSEN_MODEL_WEB_SCRIPT=${ICHOSEN_ROOT_PATH}/models/${ICHOSEN_PT_MODEL_TEMP}/ichosengpt_web_streamlit.py
+ICHOSEN_MODEL_WEB_SCRIPT=${ICHOSEN_ROOT_PATH}/factory/ichosengpt_web_streamlit.py
 
 
 # Check Conda Environment!
@@ -94,7 +99,7 @@ CMD_PT=`echo "CUDA_VISIBLE_DEVICES=${ICHOSEN_PT_CUDA_VISIB} python ${ICHOSEN_PT_
 --logging_steps 10 \
 --save_steps 1000 \
 --learning_rate 5e-5 \
---num_train_epochs 30 \
+--num_train_epochs ${ICHOSEN_PT_NUM_EPOCHS} \
 --plot_loss \
 --fp16 \
 --overwrite_output_dir \
