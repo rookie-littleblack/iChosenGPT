@@ -5,9 +5,9 @@ from yaml import YAMLError
 import streamlit as st
 from streamlit.delta_generator import DeltaGenerator
 
-from client import get_client
-from conversation import postprocess_text, preprocess_text, Conversation, Role
-from tool_registry import dispatch_tool, get_tools
+from models.chatglm3.composite_demo.client import get_client
+from models.chatglm3.composite_demo.conversation import postprocess_text, preprocess_text, Conversation, Role
+from models.chatglm3.composite_demo.tool_registry import dispatch_tool, get_tools
 
 MAX_LENGTH = 8192
 TRUNCATE_LENGTH = 1024

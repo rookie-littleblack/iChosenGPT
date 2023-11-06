@@ -9,7 +9,7 @@ import streamlit as st
 import torch
 from transformers import AutoModel, AutoTokenizer
 
-from conversation import Conversation
+from models.chatglm3.composite_demo.conversation import Conversation
 
 TOOL_PROMPT = 'Answer the following questions as best as you can. You have access to the following tools:'
 

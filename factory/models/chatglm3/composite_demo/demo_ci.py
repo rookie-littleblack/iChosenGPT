@@ -11,8 +11,8 @@ from PIL import Image
 import streamlit as st
 from streamlit.delta_generator import DeltaGenerator
 
-from client import get_client
-from conversation import postprocess_text, preprocess_text, Conversation, Role
+from models.chatglm3.composite_demo.client import get_client
+from models.chatglm3.composite_demo.conversation import postprocess_text, preprocess_text, Conversation, Role
 
 IPYKERNEL = os.environ.get('IPYKERNEL', 'glm3demo')
 

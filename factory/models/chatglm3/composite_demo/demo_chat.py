@@ -1,8 +1,8 @@
 import streamlit as st
 from streamlit.delta_generator import DeltaGenerator
 
-from client import get_client
-from conversation import postprocess_text, preprocess_text, Conversation, Role
+from models.chatglm3.composite_demo.client import get_client
+from models.chatglm3.composite_demo.conversation import postprocess_text, preprocess_text, Conversation, Role
 
 MAX_LENGTH = 8192
 
@@ -21,7 +21,9 @@ def main(top_p: float, temperature: float, system_prompt: str, prompt_text: str)
     placeholder = st.empty()
     with placeholder.container():
         if 'chat_history' not in st.session_state:
+            print("---> 'chat_history' not in st.session_state..")
             st.session_state.chat_history = []
+        print(f"---> st.session_state.chat_history: {st.session_state.chat_history}")
 
         history: list[Conversation] = st.session_state.chat_history
 

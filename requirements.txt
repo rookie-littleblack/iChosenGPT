@@ -22,3 +22,12 @@ cpm_kernels
 mdtex2html
 streamlit>=1.24.0
 typing_extensions==4.4.0
+# Tools
+huggingface_hub
+ipykernel
+ipython
+jupyter_client
+pillow
+tokenizers
+pyyaml
+requests
