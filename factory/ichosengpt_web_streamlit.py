@@ -7,7 +7,7 @@ from transformers import AutoModel, AutoTokenizer
 # 设置页面标题、图标和布局
 st.set_page_config(
     page_title="iChosenGPT: Leverage the power of large models to fuel advancements in biomedical research.",
-    page_icon=":robot:",
+    page_icon="🦈",
     layout="wide"
 )
 

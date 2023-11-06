@@ -4,7 +4,6 @@ from streamlit.delta_generator import DeltaGenerator
 from models.chatglm3.composite_demo.client import get_client
 from models.chatglm3.composite_demo.conversation import postprocess_text, preprocess_text, Conversation, Role
 
-MAX_LENGTH = 8192
 
 client = get_client()
 
@@ -17,7 +16,7 @@ def append_conversation(
     history.append(conversation)
     conversation.show(placeholder)
 
-def main(top_p: float, temperature: float, system_prompt: str, prompt_text: str):
+def main(max_length: int, top_p: float, temperature: float, system_prompt: str, prompt_text: str):
     placeholder = st.empty()
     with placeholder.container():
         if 'chat_history' not in st.session_state:
@@ -54,7 +53,7 @@ def main(top_p: float, temperature: float, system_prompt: str, prompt_text: str)
             tools=None, 
             history=history,
             do_sample=True,
-            max_length=MAX_LENGTH,
+            max_length=max_length,
             temperature=temperature,
             top_p=top_p,
             stop_sequences=[str(Role.USER)],

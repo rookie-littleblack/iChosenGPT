@@ -11,14 +11,17 @@ from transformers import AutoModel, AutoTokenizer
 
 from models.chatglm3.composite_demo.conversation import Conversation
 
+
 TOOL_PROMPT = 'Answer the following questions as best as you can. You have access to the following tools:'
 
 MODEL_PATH = os.environ.get('MODEL_PATH', '/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B')
+
 
 @st.cache_resource
 def get_client() -> Client:
     client = HFClient(MODEL_PATH)
     return client
+
 
 class Client(Protocol):
     def generate_stream(self,
@@ -28,6 +31,7 @@ class Client(Protocol):
         **parameters: Any
     ) -> Iterable[TextGenerationStreamResponse]:
         ...
+
 
 def stream_chat(self, tokenizer, query: str, history: list[tuple[str, str]] = None, role: str = "user",
                     past_key_values=None,max_length: int = 8192, do_sample=True, top_p=0.8, temperature=0.8,
@@ -79,6 +83,7 @@ def stream_chat(self, tokenizer, query: str, history: list[tuple[str, str]] = No
                 yield response, new_history, past_key_values
             else:
                 yield response, new_history
+
 
 class HFClient(Client):
     def __init__(self, model_path: str):

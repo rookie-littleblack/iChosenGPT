@@ -6,7 +6,9 @@ from PIL.Image import Image
 import streamlit as st
 from streamlit.delta_generator import DeltaGenerator
 
+
 TOOL_PROMPT = 'Answer the following questions as best as you can. You have access to the following tools:\n'
+
 
 class Role(Enum):
     SYSTEM = auto()
@@ -47,6 +49,7 @@ class Role(Enum):
                 return st.chat_message(name="observation", avatar="user")
             case _:
                 st.error(f'Unexpected role: {self}')
+
 
 @dataclass
 class Conversation:
@@ -89,6 +92,7 @@ class Conversation:
             text = self.get_text()
             message.markdown(text)
 
+
 def preprocess_text(
     system: str | None,
     tools: list[dict] | None,
@@ -106,6 +110,7 @@ def preprocess_text(
         prompt += f'{conversation}'
     prompt += f'{Role.ASSISTANT}\n'
     return prompt
+
 
 def postprocess_text(text: str) -> str:
     text = text.replace("\(", "$")

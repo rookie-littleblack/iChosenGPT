@@ -5,8 +5,10 @@ import traceback
 from types import GenericAlias
 from typing import get_origin, Annotated
 
+
 _TOOL_HOOKS = {}
 _TOOL_DESCRIPTIONS = {}
+
 
 def register_tool(func: callable):
     tool_name = func.__name__
@@ -45,6 +47,7 @@ def register_tool(func: callable):
 
     return func
 
+
 def dispatch_tool(tool_name: str, tool_params: dict) -> str:
     if tool_name not in _TOOL_HOOKS:
         return f"Tool `{tool_name}` not found. Please use a provided tool."
@@ -55,10 +58,13 @@ def dispatch_tool(tool_name: str, tool_params: dict) -> str:
         ret = traceback.format_exc()
     return str(ret)
 
+
 def get_tools() -> dict:
     return deepcopy(_TOOL_DESCRIPTIONS)
 
+
 # Tool Definitions
+
 
 @register_tool
 def random_number_generator(
@@ -77,6 +83,7 @@ def random_number_generator(
 
     import random
     return random.Random(seed).randint(*range)
+
 
 @register_tool
 def get_weather(
@@ -103,6 +110,7 @@ def get_weather(
         ret = "Error encountered while fetching weather data!\n" + traceback.format_exc() 
 
     return str(ret)
+
 
 if __name__ == "__main__":
     print(dispatch_tool("get_weather", {"city_name": "beijing"}))

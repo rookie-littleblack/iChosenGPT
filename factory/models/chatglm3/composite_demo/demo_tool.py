@@ -9,7 +9,7 @@ from models.chatglm3.composite_demo.client import get_client
 from models.chatglm3.composite_demo.conversation import postprocess_text, preprocess_text, Conversation, Role
 from models.chatglm3.composite_demo.tool_registry import dispatch_tool, get_tools
 
-MAX_LENGTH = 8192
+
 TRUNCATE_LENGTH = 1024
 
 EXAMPLE_TOOL = {
@@ -57,7 +57,7 @@ def append_conversation(
     history.append(conversation)
     conversation.show(placeholder)
 
-def main(top_p: float, temperature: float, prompt_text: str):
+def main(max_length: int, top_p: float, temperature: float, prompt_text: str):
     manual_mode = st.toggle('Manual mode',
         help='Define your tools in YAML format. You need to supply tool call results manually.'
     )
@@ -113,7 +113,7 @@ def main(top_p: float, temperature: float, prompt_text: str):
                 tools=tools,
                 history=history,
                 do_sample=True,
-                max_length=MAX_LENGTH,
+                max_length=max_length,
                 temperature=temperature,
                 top_p=top_p,
                 stop_sequences=[str(r) for r in (Role.USER, Role.OBSERVATION)],

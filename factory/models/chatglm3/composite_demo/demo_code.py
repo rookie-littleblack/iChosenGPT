@@ -14,14 +14,15 @@ from streamlit.delta_generator import DeltaGenerator
 from models.chatglm3.composite_demo.client import get_client
 from models.chatglm3.composite_demo.conversation import postprocess_text, preprocess_text, Conversation, Role
 
-IPYKERNEL = os.environ.get('IPYKERNEL', 'glm3demo')
+
+IPYKERNEL = os.environ.get('ICHOSEN_IPYKERNEL', 'ichosengpt_ipker')  # Quan Xu, 2023-11-06: You should run 'export ICHOSEN_IPYKERNEL=XXX' before running this script!
 
 SYSTEM_PROMPT = '你是一位智能AI助手，你叫ChatGLM，你连接着一台电脑，但请注意不能联网。在使用Python解决任务时，你可以运行代码并得到结果，如果运行结果有错误，你需要尽可能对代码进行改进。你可以处理用户上传到电脑上的文件，文件默认存储路径是/mnt/data/。'
 
-MAX_LENGTH = 8192
 TRUNCATE_LENGTH = 1024
 
 client = get_client()
+
 
 class CodeKernel(object):
     def __init__(self,
@@ -153,15 +154,18 @@ class CodeKernel(object):
 
     def is_alive(self):
         return self.kernel.is_alive()
-    
+
+
 def b64_2_img(data):
     buff = BytesIO(base64.b64decode(data))
     return Image.open(buff)
 
+
 def clean_ansi_codes(input_string):
     ansi_escape = re.compile(r'(\x9B|\x1B\[|\u001b\[)[0-?]*[ -/]*[@-~]')
     return ansi_escape.sub('', input_string)
-    
+
+
 def execute(code, kernel: CodeKernel) -> tuple[str, str | Image.Image]:
     res = ""
     res_type = None
@@ -197,15 +201,18 @@ def execute(code, kernel: CodeKernel) -> tuple[str, str | Image.Image]:
     
     return res_type, res
 
+
 @st.cache_resource
 def get_kernel():
     kernel = CodeKernel()
     return kernel
 
+
 def extract_code(text: str) -> str:
     pattern = r'```([^\n]*)\n(.*?)```'
     matches = re.findall(pattern, text, re.DOTALL)
     return matches[-1][1]
+
 
 # Append a conversation into history, while show it in a new markdown block
 def append_conversation(
@@ -216,7 +223,8 @@ def append_conversation(
     history.append(conversation)
     conversation.show(placeholder)
 
-def main(top_p: float, temperature: float, prompt_text: str):
+
+def main(max_length: int, top_p: float, temperature: float, prompt_text: str):
     if 'ci_history' not in st.session_state:
         st.session_state.ci_history = []
 
@@ -251,7 +259,7 @@ def main(top_p: float, temperature: float, prompt_text: str):
                 tools=None,
                 history=history,
                 do_sample=True,
-                max_length=MAX_LENGTH,
+                max_length=max_length,
                 temperature=temperature,
                 top_p=top_p,
                 stop_sequences=[str(r) for r in (Role.USER, Role.OBSERVATION)],
