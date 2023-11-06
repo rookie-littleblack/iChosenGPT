@@ -38,15 +38,15 @@ class Role(Enum):
             case Role.SYSTEM.value:
                 return
             case Role.USER.value:
-                return st.chat_message(name="user", avatar="user")
+                return st.chat_message(name="user", avatar="👨")
             case Role.ASSISTANT.value:
-                return st.chat_message(name="assistant", avatar="assistant")
+                return st.chat_message(name="assistant", avatar="👩‍💼")
             case Role.TOOL.value:
-                return st.chat_message(name="tool", avatar="assistant")
+                return st.chat_message(name="tool", avatar="🛠️")
             case Role.INTERPRETER.value:
-                return st.chat_message(name="interpreter", avatar="assistant")
+                return st.chat_message(name="interpreter", avatar="💻")
             case Role.OBSERVATION.value:
-                return st.chat_message(name="observation", avatar="user")
+                return st.chat_message(name="observation", avatar="🤖")
             case _:
                 st.error(f'Unexpected role: {self}')
 

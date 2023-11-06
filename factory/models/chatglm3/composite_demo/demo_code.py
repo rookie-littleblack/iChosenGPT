@@ -249,7 +249,7 @@ def main(max_length: int, top_p: float, temperature: float, prompt_text: str):
         print(history)
 
         placeholder = st.container()
-        message_placeholder = placeholder.chat_message(name="assistant", avatar="assistant")
+        message_placeholder = placeholder.chat_message(name="assistant", avatar="👩‍💼")
         markdown_placeholder = message_placeholder.empty()
 
         for _ in range(5):
@@ -282,7 +282,7 @@ def main(max_length: int, top_p: float, temperature: float, prompt_text: str):
                                 Role.ASSISTANT,
                                 postprocess_text(output_text),
                             ), history, markdown_placeholder)
-                            message_placeholder = placeholder.chat_message(name="interpreter", avatar="assistant")
+                            message_placeholder = placeholder.chat_message(name="interpreter", avatar="💻")
                             markdown_placeholder = message_placeholder.empty()
                             output_text = ''
                             continue
@@ -295,7 +295,7 @@ def main(max_length: int, top_p: float, temperature: float, prompt_text: str):
                                 Role.INTERPRETER,
                                 postprocess_text(display_text),
                             ), history, markdown_placeholder)
-                            message_placeholder = placeholder.chat_message(name="observation", avatar="user")
+                            message_placeholder = placeholder.chat_message(name="observation", avatar="🤖")
                             markdown_placeholder = message_placeholder.empty()
                             output_text = ''
                             
@@ -317,7 +317,7 @@ def main(max_length: int, top_p: float, temperature: float, prompt_text: str):
                                 tool=None,
                                 image=res if res_type == 'image' else None,
                             ), history, markdown_placeholder)
-                            message_placeholder = placeholder.chat_message(name="assistant", avatar="assistant")
+                            message_placeholder = placeholder.chat_message(name="assistant", avatar="👩‍💼")
                             markdown_placeholder = message_placeholder.empty()
                             output_text = ''
                             break

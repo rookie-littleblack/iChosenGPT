@@ -103,7 +103,7 @@ def main(max_length: int, top_p: float, temperature: float, prompt_text: str):
         print(history)
 
         placeholder = st.container()
-        message_placeholder = placeholder.chat_message(name="assistant", avatar="assistant")
+        message_placeholder = placeholder.chat_message(name="assistant", avatar="👩‍💼")
         markdown_placeholder = message_placeholder.empty()
 
         for _ in range(5):
@@ -137,7 +137,7 @@ def main(max_length: int, top_p: float, temperature: float, prompt_text: str):
                                 postprocess_text(output_text),
                             ), history, markdown_placeholder)
                             output_text = ''
-                            message_placeholder = placeholder.chat_message(name="tool", avatar="assistant")
+                            message_placeholder = placeholder.chat_message(name="tool", avatar="🛠️")
                             markdown_placeholder = message_placeholder.empty()
                             continue
                         case '<|observation|>':
@@ -149,7 +149,7 @@ def main(max_length: int, top_p: float, temperature: float, prompt_text: str):
                                 postprocess_text(output_text),
                                 tool,
                             ), history, markdown_placeholder)
-                            message_placeholder = placeholder.chat_message(name="observation", avatar="user")
+                            message_placeholder = placeholder.chat_message(name="observation", avatar="🤖")
                             markdown_placeholder = message_placeholder.empty()
                             
                             try:
@@ -174,7 +174,7 @@ def main(max_length: int, top_p: float, temperature: float, prompt_text: str):
                                 append_conversation(Conversation(
                                     Role.OBSERVATION, observation
                                 ), history, markdown_placeholder)
-                                message_placeholder = placeholder.chat_message(name="assistant", avatar="assistant")
+                                message_placeholder = placeholder.chat_message(name="assistant", avatar="👩‍💼")
                                 markdown_placeholder = message_placeholder.empty()
                                 st.session_state.calling_tool = False
                                 break
