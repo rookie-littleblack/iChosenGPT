@@ -13,15 +13,15 @@
 export ICHOSEN_IPYKERNEL=ichosengpt_ipker
 export ICHOSEN_ROOT_PATH=/work/20231103-0935_ChosenGPT
 
-# export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B
-# export ICHOSEN_MODEL_CKPT=/work/20231103-0935_ChosenGPT/out/20231104-0949_20231103-0935_ChosenGPT_PT
-# export ICHOSEN_MODEL_TEMP=chatglm3
+export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B
+export ICHOSEN_MODEL_CKPT=/work/20231103-0935_ChosenGPT/out/20231104-0949_20231103-0935_ChosenGPT_PT
+export ICHOSEN_MODEL_TEMP=chatglm3
 
 # export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231106-1104_Llama-2-70b-chat-hf
 # export ICHOSEN_MODEL_TEMP=llama2
 
-export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231106-1533_Llama2-Chinese-13b-Chat
-export ICHOSEN_MODEL_TEMP=llama2
+# export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231106-1533_Llama2-Chinese-13b-Chat
+# export ICHOSEN_MODEL_TEMP=llama2
 
 
 # ##########################################
@@ -41,13 +41,13 @@ export ICHOSEN_MODEL_TEMP=llama2
 cd $ICHOSEN_ROOT_PATH
 
 
-##########################################
-### Initiate Board - gradio version!
-export ICHOSEN_BOARD_CUDA_VISIB="4,5,6,7"
-export ICHOSEN_BOARD_WPORT=6721
-export ICHOSEN_BOARD_SCRIPT=${ICHOSEN_ROOT_PATH}/factory/ichosengpt_board.py
+# ##########################################
+# ### Initiate Board - gradio version!
+# export ICHOSEN_BOARD_CUDA_VISIB="4,5,6,7"
+# export ICHOSEN_BOARD_WPORT=6721
+# export ICHOSEN_BOARD_SCRIPT=${ICHOSEN_ROOT_PATH}/factory/ichosengpt_board.py
 
-CUDA_VISIBLE_DEVICES=${ICHOSEN_BOARD_CUDA_VISIB} python ${ICHOSEN_BOARD_SCRIPT}
+# CUDA_VISIBLE_DEVICES=${ICHOSEN_BOARD_CUDA_VISIB} python ${ICHOSEN_BOARD_SCRIPT}
 
 
 # ##########################################
@@ -69,17 +69,17 @@ CUDA_VISIBLE_DEVICES=${ICHOSEN_BOARD_CUDA_VISIB} python ${ICHOSEN_BOARD_SCRIPT}
 # #--checkpoint_dir ${ICHOSEN_GRA_MODEL_CKPT}
 
 
-# ##########################################
-# ### Initiate Web - streamlit version!
-# # For ChatGLM3!
-# export ICHOSEN_WEB_MODEL_PATH=${ICHOSEN_MODEL_CHAT}
-# export ICHOSEN_WEB_CUDA_VISIB="4,5,6,7"
-# export ICHOSEN_WEB_MODEL_PORT=6723
+##########################################
+### Initiate Web - streamlit version!
+# For ChatGLM3!
+export ICHOSEN_WEB_MODEL_PATH=${ICHOSEN_MODEL_CHAT}
+export ICHOSEN_WEB_CUDA_VISIB="4,5,6,7"
+export ICHOSEN_WEB_MODEL_PORT=6723
 
-# export ICHOSEN_WEB_MODEL=${ICHOSEN_WEB_MODEL_PATH}
-# export ICHOSEN_WEB_SCRIPT=${ICHOSEN_ROOT_PATH}/factory/ichosengpt_web_streamlit.py
+export ICHOSEN_WEB_MODEL=${ICHOSEN_WEB_MODEL_PATH}
+export ICHOSEN_WEB_SCRIPT=${ICHOSEN_ROOT_PATH}/factory/ichosengpt_web_streamlit.py
 
-# CUDA_VISIBLE_DEVICES=${ICHOSEN_WEB_CUDA_VISIB} streamlit run ${ICHOSEN_WEB_SCRIPT} --server.port ${ICHOSEN_WEB_MODEL_PORT}
+CUDA_VISIBLE_DEVICES=${ICHOSEN_WEB_CUDA_VISIB} streamlit run ${ICHOSEN_WEB_SCRIPT} --server.port ${ICHOSEN_WEB_MODEL_PORT}
 
 
 # ##########################################

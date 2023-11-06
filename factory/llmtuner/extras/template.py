@@ -241,6 +241,19 @@ register_template(
 
 
 r"""
+None template.
+Quan Xu, 2023-11-06
+"""
+register_template(
+    name="none",
+    prefix=[],
+    prompt=[],
+    system=(),
+    sep=[]
+)
+
+
+r"""
 Default template.
 """
 register_template(

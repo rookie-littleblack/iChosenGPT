@@ -89,6 +89,8 @@ class WebChatModel(ChatModel):
         chatbot.append([query, ""])
         response = ""
         #print(f"======> [QX] in '/work/20231103-0935_ChosenGPT/factory/llmtuner/webui/chatter.py', predict for '{query}'..")
+        #print(f"======> [QX] in '/work/20231103-0935_ChosenGPT/factory/llmtuner/webui/chatter.py', history: '{str(history)}'..")
+        #print(f"======> [QX] in '/work/20231103-0935_ChosenGPT/factory/llmtuner/webui/chatter.py', system: '{str(system)}'..")
         for new_text in self.stream_chat(
             query, history, system, max_new_tokens=max_new_tokens, top_p=top_p, temperature=temperature
         ):

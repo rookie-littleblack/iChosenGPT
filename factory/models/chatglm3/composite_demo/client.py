@@ -11,6 +11,8 @@ from transformers import AutoModel, AutoTokenizer
 
 from models.chatglm3.composite_demo.conversation import Conversation
 
+from utils.ichosen_get_model import auto_load_model
+
 
 TOOL_PROMPT = 'Answer the following questions as best as you can. You have access to the following tools:'
 
@@ -107,15 +109,29 @@ class HFClient(Client):
         #     'cpu'
         # )
 
-        ### V2
-        if num_gpus == 1:
-            print(f"---> Using single GPU...")
-            self.model = AutoModel.from_pretrained(model_path, trust_remote_code=True).cuda()
-        else:
-            print(f"---> Using multiple GPUs: {num_gpus}...")
-            # 多显卡支持,使用下面两行代替上面一行,将num_gpus改为你实际的显卡数量
-            from models.chatglm3.utils import load_model_on_gpus
-            self.model = load_model_on_gpus(model_path, num_gpus=num_gpus)
+        # ### V2
+        # if num_gpus == 1:
+        #     print(f"---> Using single GPU...")
+        #     self.model = AutoModel.from_pretrained(model_path, trust_remote_code=True).cuda()
+        # else:
+        #     print(f"---> Using multiple GPUs: {num_gpus}...")
+            
+        #     # V1:
+        #     # from models.chatglm3.utils import load_model_on_gpus
+        #     # self.model = load_model_on_gpus(model_path, num_gpus=num_gpus)
+
+        #     # V2:
+        #     from accelerate import dispatch_model
+        #     from accelerate.utils import infer_auto_device_map, get_balanced_memory
+        #     self.model = AutoModel.from_pretrained(model_path, trust_remote_code=True)  # DO NOT add '.cuda()' here!
+        #     if self.model._no_split_modules is None:
+        #         raise ValueError("The model class needs to implement the `_no_split_modules` attribute.")
+        #     kwargs = {"dtype": self.model.dtype, "no_split_module_classes": self.model._no_split_modules}
+        #     max_memory = get_balanced_memory(self.model, **kwargs)
+        #     self.model.tie_weights()  # Make sure tied weights are tied before creating the device map.
+        #     device_map = infer_auto_device_map(self.model, max_memory=max_memory, **kwargs)
+        #     self.model = dispatch_model(self.model, device_map)
+        self.model = auto_load_model(model_path)
 
         print(f"==========> in class HFClient(Client), after '{model_path}' model loaded...")
         self.model = self.model.eval()

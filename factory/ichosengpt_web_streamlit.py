@@ -2,6 +2,7 @@ import streamlit as st
 import torch
 import os
 from transformers import AutoModel, AutoTokenizer
+from utils.ichosen_get_model import auto_load_model
 
 
 # 设置页面标题、图标和布局
@@ -28,14 +29,28 @@ else:
 def get_model():
     tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
 
-    if num_gpus == 1:
-        print(f"---> Using single GPU...")
-        model = AutoModel.from_pretrained(model_path, trust_remote_code=True).cuda()
-    else:
-        print(f"---> Using multiple GPUs: {num_gpus}...")
-        # 多显卡支持,使用下面两行代替上面一行,将num_gpus改为你实际的显卡数量
-        from models.chatglm3.utils import load_model_on_gpus
-        model = load_model_on_gpus(model_path, num_gpus=num_gpus)
+    # if num_gpus == 1:
+    #     print(f"---> Using single GPU...")
+    #     model = AutoModel.from_pretrained(model_path, trust_remote_code=True).cuda()
+    # else:
+    #     print(f"---> Using multiple GPUs: {num_gpus}...")
+        
+    #     # V1:
+    #     # from models.chatglm3.utils import load_model_on_gpus
+    #     # model = load_model_on_gpus(model_path, num_gpus=num_gpus)
+
+    #     # V2:
+    #     from accelerate import dispatch_model
+    #     from accelerate.utils import infer_auto_device_map, get_balanced_memory
+    #     model = AutoModel.from_pretrained(model_path, trust_remote_code=True)  # DO NOT add '.cuda()' here!
+    #     if model._no_split_modules is None:
+    #         raise ValueError("The model class needs to implement the `_no_split_modules` attribute.")
+    #     kwargs = {"dtype": model.dtype, "no_split_module_classes": model._no_split_modules}
+    #     max_memory = get_balanced_memory(model, **kwargs)
+    #     model.tie_weights()  # Make sure tied weights are tied before creating the device map.
+    #     device_map = infer_auto_device_map(model, max_memory=max_memory, **kwargs)
+    #     model = dispatch_model(model, device_map)
+    model = auto_load_model(model_path)
 
     model = model.eval()
     return tokenizer, model
