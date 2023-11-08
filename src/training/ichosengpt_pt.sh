@@ -103,7 +103,7 @@ echo "#################################################"
 echo "===> Now, let's begin the pre-training process..."
 CMD_PT_BASIC="CUDA_VISIBLE_DEVICES=${ICHOSEN_PT_CUDA_VISIB} python"
 if [ ${bol_distributed} -eq 1 ]; then
-    CMD_PT_BASIC="accelerate launch --config_file ${ICHOSEN_PT_CONF_ACCEL}"
+    CMD_PT_BASIC="accelerate launch --config_file ${ICHOSEN_PT_CONF_ACCEL}"  # distributed training!
 fi
 CMD_PT=`echo "${CMD_PT_BASIC} ${ICHOSEN_PT_SCRIPT_TRAIN} \
 --stage pt \
@@ -135,48 +135,48 @@ if [ $RESULT_CMD_PT -ne 0 ]; then
 fi
 
 
-# Model Export!
-echo ""
-echo ""
-echo "================================================="
-echo "#################################################"
-echo "===> Now, let's begin the model export process..."
-CMD_EX=`echo "python ${ICHOSEN_PT_SCRIPT_EXPOT} \
---model_name_or_path ${ICHOSEN_PT_MODEL_PATH} \
---template ${ICHOSEN_PT_MODEL_TEMP} \
---finetuning_type lora \
---checkpoint_dir ${ICHOSEN_PT_ODIR_CKPOT} \
---export_dir ${ICHOSEN_PT_ODIR_MODEL}"`
-echo "===> Model export command: '${CMD_EX}'..."
-eval ${CMD_EX}
-RESULT_CMD_EX=$?
-if [ $RESULT_CMD_EX -ne 0 ]; then
-    echo "===> Oops... an error occurred while executing the model export command!"
-    echo "===> Pipeline aborted..."
-    exit $RESULT_CMD_EX
-fi
-## Delete some configurations that might lead to exceptions.
-if [ "${ICHOSEN_PT_MODEL_TEMP}" = "chatglm3" ]; then
-    cp ${ICHOSEN_PT_ODIR_MODEL}/tokenizer_config.json ${ICHOSEN_PT_ODIR_MODEL}/tokenizer_config.json.bak
-    jq 'del(.eos_token) | del(.pad_token) | del(.unk_token)' ${ICHOSEN_PT_ODIR_MODEL}/tokenizer_config.json.bak > ${ICHOSEN_PT_ODIR_MODEL}/tokenizer_config.json
-fi
+# # Model Export!
+# echo ""
+# echo ""
+# echo "================================================="
+# echo "#################################################"
+# echo "===> Now, let's begin the model export process..."
+# CMD_EX=`echo "python ${ICHOSEN_PT_SCRIPT_EXPOT} \
+# --model_name_or_path ${ICHOSEN_PT_MODEL_PATH} \
+# --template ${ICHOSEN_PT_MODEL_TEMP} \
+# --finetuning_type lora \
+# --checkpoint_dir ${ICHOSEN_PT_ODIR_CKPOT} \
+# --export_dir ${ICHOSEN_PT_ODIR_MODEL}"`
+# echo "===> Model export command: '${CMD_EX}'..."
+# eval ${CMD_EX}
+# RESULT_CMD_EX=$?
+# if [ $RESULT_CMD_EX -ne 0 ]; then
+#     echo "===> Oops... an error occurred while executing the model export command!"
+#     echo "===> Pipeline aborted..."
+#     exit $RESULT_CMD_EX
+# fi
+# ## Delete some configurations that might lead to exceptions.
+# if [ "${ICHOSEN_PT_MODEL_TEMP}" = "chatglm3" ]; then
+#     cp ${ICHOSEN_PT_ODIR_MODEL}/tokenizer_config.json ${ICHOSEN_PT_ODIR_MODEL}/tokenizer_config.json.bak
+#     jq 'del(.eos_token) | del(.pad_token) | del(.unk_token)' ${ICHOSEN_PT_ODIR_MODEL}/tokenizer_config.json.bak > ${ICHOSEN_PT_ODIR_MODEL}/tokenizer_config.json
+# fi
 
 
-# Running This Model!
-echo ""
-echo ""
-echo "======================================================================="
-echo "#######################################################################"
-echo "===> Now, let's proceed with loading the exported model for testing...."
-CMD_LM=`echo "export ICHOSEN_MODEL=${ICHOSEN_PT_ODIR_MODEL}; CUDA_VISIBLE_DEVICES=${ICHOSEN_PT_CUDA_VISIB} streamlit run ${ICHOSEN_MODEL_WEB_SCRIPT} --server.port ${ICHOSEN_PT_MODEL_PORT}"`
-echo "===> Model export command: '${CMD_LM}'..."
-eval ${CMD_LM}
-RESULT_CMD_LM=$?
-if [ $RESULT_CMD_LM -ne 0 ]; then
-    echo "===> Oops... an error occurred while loading the exported model!"
-    echo "===> Pipeline aborted..."
-    exit $RESULT_CMD_LM
-fi
+# # Running This Model!
+# echo ""
+# echo ""
+# echo "======================================================================="
+# echo "#######################################################################"
+# echo "===> Now, let's proceed with loading the exported model for testing...."
+# CMD_LM=`echo "export ICHOSEN_WEB_MODEL=${ICHOSEN_PT_ODIR_MODEL}; CUDA_VISIBLE_DEVICES=${ICHOSEN_PT_CUDA_VISIB} streamlit run ${ICHOSEN_MODEL_WEB_SCRIPT} --server.port ${ICHOSEN_PT_MODEL_PORT}"`
+# echo "===> Model export command: '${CMD_LM}'..."
+# eval ${CMD_LM}
+# RESULT_CMD_LM=$?
+# if [ $RESULT_CMD_LM -ne 0 ]; then
+#     echo "===> Oops... an error occurred while loading the exported model!"
+#     echo "===> Pipeline aborted..."
+#     exit $RESULT_CMD_LM
+# fi
 
 
 # The End!
