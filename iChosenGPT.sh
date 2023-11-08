@@ -13,15 +13,16 @@
 export ICHOSEN_IPYKERNEL=ichosengpt_ipker
 export ICHOSEN_ROOT_PATH=/work/20231103-0935_ChosenGPT
 
-export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B
-export ICHOSEN_MODEL_CKPT=/work/20231103-0935_ChosenGPT/out/20231104-0949_20231103-0935_ChosenGPT_PT
-export ICHOSEN_MODEL_TEMP=chatglm3
+# export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B
+# export ICHOSEN_MODEL_CKPT=/work/20231103-0935_ChosenGPT/out/20231104-0949_20231103-0935_ChosenGPT_PT
+# export ICHOSEN_MODEL_TEMP=chatglm3
 
 # export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231106-1104_Llama-2-70b-chat-hf
 # export ICHOSEN_MODEL_TEMP=llama2
 
-# export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231106-1533_Llama2-Chinese-13b-Chat
-# export ICHOSEN_MODEL_TEMP=llama2
+export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231106-1533_Llama2-Chinese-13b-Chat
+export ICHOSEN_MODEL_TEMP=llama2
+
 
 
 # ##########################################
@@ -41,13 +42,13 @@ export ICHOSEN_MODEL_TEMP=chatglm3
 cd $ICHOSEN_ROOT_PATH
 
 
-##########################################
-### Initiate Board - gradio version!
-export ICHOSEN_BOARD_CUDA_VISIB="4,5,6,7"
-export ICHOSEN_BOARD_WPORT=6721
-export ICHOSEN_BOARD_SCRIPT=${ICHOSEN_ROOT_PATH}/factory/ichosengpt_board.py
+# ##########################################
+# ### Initiate Board - gradio version!
+# export ICHOSEN_BOARD_CUDA_VISIB="4,5,6,7"
+# export ICHOSEN_BOARD_WPORT=6721
+# export ICHOSEN_BOARD_SCRIPT=${ICHOSEN_ROOT_PATH}/factory/ichosengpt_board.py
 
-CUDA_VISIBLE_DEVICES=${ICHOSEN_BOARD_CUDA_VISIB} python ${ICHOSEN_BOARD_SCRIPT}
+# CUDA_VISIBLE_DEVICES=${ICHOSEN_BOARD_CUDA_VISIB} python ${ICHOSEN_BOARD_SCRIPT}
 
 
 # ##########################################
@@ -100,11 +101,26 @@ CUDA_VISIBLE_DEVICES=${ICHOSEN_BOARD_CUDA_VISIB} python ${ICHOSEN_BOARD_SCRIPT}
 # export ICHOSEN_PT_MODEL_PATH=${ICHOSEN_MODEL_CHAT}
 # export ICHOSEN_PT_MODEL_TEMP=${ICHOSEN_MODEL_TEMP}
 # export ICHOSEN_PT_CUDA_VISIB=7
-# export ICHOSEN_PT_DATAS_NAME=ichosengpt_corpus_text_chosenmed
-# #export ICHOSEN_PT_DATAS_NAME=ichosengpt_corpus_text_dengling_newsreport_20231103
+# export ICHOSEN_PT_DATAS_NAME=ichosengpt_corpus_text_dailymed_all
 # export ICHOSEN_PT_MODEL_PORT=6725
 # export ICHOSEN_PT_NUM_EPOCHS=3.0
 
 # sh src/training/ichosengpt_pt.sh
+
+
+##########################################
+### Pre-Training LLM - Multi-GPUs!
+export ICHOSEN_PT_MODEL_PATH=${ICHOSEN_MODEL_CHAT}
+export ICHOSEN_PT_MODEL_TEMP=${ICHOSEN_MODEL_TEMP}
+export ICHOSEN_PT_CUDA_VISIB="4,5,6,7"
+#export ICHOSEN_PT_DATAS_NAME=ichosengpt_corpus_text_dailymed_all
+export ICHOSEN_PT_DATAS_NAME=ichosengpt_corpus_text_chosenmed
+export ICHOSEN_PT_MODEL_PORT=6725
+export ICHOSEN_PT_NUM_EPOCHS=3.0
+
+export ICHOSEN_PT_CONF_ACCEL=${ICHOSEN_ROOT_PATH}/conf/accelerate_train.yaml
+
+#accelerate config --config_file ${ICHOSEN_PT_CONF_ACCEL}  # to generate accelerate config file!
+sh src/training/ichosengpt_pt.sh
 
 

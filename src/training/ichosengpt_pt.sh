@@ -13,6 +13,7 @@
 #             export ICHOSEN_PT_DATAS_NAME=XXX    # Dataset name
 #             export ICHOSEN_PT_MODEL_PORT=XXX    # Web port
 #             export ICHOSEN_PT_NUM_EPOCHS=XXX    # Number of epoches!
+#             export ICHOSEN_PT_CONF_ACCEL=XXX    # Config file for accelerate (if need)!
 #############################################################################################
 #!/bin/bash
 
@@ -55,6 +56,22 @@ if [ -z "${ICHOSEN_PT_NUM_EPOCHS}" ]; then
 fi
 
 
+# Check distributed or not!
+bol_distributed=0  # false
+case ${ICHOSEN_PT_CUDA_VISIB} in
+  *,*)  # comma contains: multi-GPUs!
+    bol_distributed=1  # true
+    if [ -z "${ICHOSEN_PT_CONF_ACCEL}" ]; then
+        echo "Error: Environment variable 'ICHOSEN_PT_CONF_ACCEL' is not set. Please set it before running this script."
+        exit 1
+    fi
+    ;;
+#   *)
+#     echo "变量不包含逗号"
+#     ;;
+esac
+
+
 # Variables!
 ICHOSEN_PT_TIMESTAMP=$(date "+%Y%m%d-%H%M")
 ICHOSEN_PT_NAME_MODEL=$(basename "${ICHOSEN_ROOT_PATH}")
@@ -84,13 +101,17 @@ echo ""
 echo "================================================="
 echo "#################################################"
 echo "===> Now, let's begin the pre-training process..."
-CMD_PT=`echo "CUDA_VISIBLE_DEVICES=${ICHOSEN_PT_CUDA_VISIB} python ${ICHOSEN_PT_SCRIPT_TRAIN} \
+CMD_PT_BASIC="CUDA_VISIBLE_DEVICES=${ICHOSEN_PT_CUDA_VISIB} python"
+if [ ${bol_distributed} -eq 1 ]; then
+    CMD_PT_BASIC="accelerate launch --config_file ${ICHOSEN_PT_CONF_ACCEL}"
+fi
+CMD_PT=`echo "${CMD_PT_BASIC} ${ICHOSEN_PT_SCRIPT_TRAIN} \
 --stage pt \
 --model_name_or_path ${ICHOSEN_PT_MODEL_PATH} \
 --do_train \
 --dataset ${ICHOSEN_PT_DATAS_NAME} \
 --finetuning_type lora \
---lora_target query_key_value \
+--lora_target all \
 --output_dir ${ICHOSEN_PT_ODIR_CKPOT} \
 --overwrite_cache \
 --per_device_train_batch_size 4 \
