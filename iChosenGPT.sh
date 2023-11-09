@@ -12,9 +12,11 @@
 ### Global Variables!
 export ICHOSEN_IPYKERNEL=ichosengpt_ipker
 export ICHOSEN_ROOT_PATH=/work/20231103-0935_ChosenGPT
+export ICHOSEN_LOGS_PATH=${ICHOSEN_ROOT_PATH}/logs
+export ICHOSEN_LOGS_PREF=${ICHOSEN_LOGS_PATH}/$(date "+%Y%m%d-%H%M%S")_running
 
 # export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B
-# export ICHOSEN_MODEL_CKPT=/work/20231103-0935_ChosenGPT/out/20231104-0949_20231103-0935_ChosenGPT_PT
+# #export ICHOSEN_MODEL_CKPT=/work/20231103-0935_ChosenGPT/out/20231104-0949_20231103-0935_ChosenGPT_PT
 # export ICHOSEN_MODEL_TEMP=chatglm3
 
 # export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231106-1104_Llama-2-70b-chat-hf
@@ -110,9 +112,17 @@ elif [ "$1" == "pt_single" ]; then
     export ICHOSEN_PT_CUDA_VISIB=7
     export ICHOSEN_PT_DATAS_NAME=ichosengpt_corpus_text_dailymed_all
     export ICHOSEN_PT_MODEL_PORT=6725
-    export ICHOSEN_PT_NUM_EPOCHS=3.0
+    export ICHOSEN_PT_NUM_EPOCHS=10
+    export ICHOSEN_PT_BATCH_SIZE=32
 
-    sh src/training/ichosengpt_pt.sh
+    # Execute running!
+    log_file=${ICHOSEN_LOGS_PREF}_$1.log
+    nohup sh src/training/ichosengpt_pt.sh > ${log_file} &
+    tail_cmd=`tail -f ${log_file}`
+    echo "You can now using the following cmd to show running logs:"
+    echo "${tail_cmd}"
+    echo "You can also using the following cmd (or other similar cmd) to show running pid:"
+    echo "ps -aux|grep ichosengpt"
 elif [ "$1" == "pt_multi" ]; then
     echo "===> Pre-Training LLM - Multi-GPUs!"
     ##########################################
@@ -123,12 +133,21 @@ elif [ "$1" == "pt_multi" ]; then
     export ICHOSEN_PT_DATAS_NAME=ichosengpt_corpus_text_dailymed_all
     #export ICHOSEN_PT_DATAS_NAME=ichosengpt_corpus_text_dengling_newsreport_20231103
     export ICHOSEN_PT_MODEL_PORT=6725
-    export ICHOSEN_PT_NUM_EPOCHS=20
+    export ICHOSEN_PT_NUM_EPOCHS=10
+    export ICHOSEN_PT_BATCH_SIZE=16
 
     export ICHOSEN_PT_CONF_ACCEL=${ICHOSEN_ROOT_PATH}/conf/accelerate_train.yaml
 
+    # Execute running!
     #accelerate config --config_file ${ICHOSEN_PT_CONF_ACCEL}  # to generate accelerate config file!
-    sh src/training/ichosengpt_pt.sh
+    log_file=${ICHOSEN_LOGS_PREF}_$1.log
+    echo "log_file: ${log_file}"
+    nohup sh src/training/ichosengpt_pt.sh > ${log_file} 2>&1 &
+    tail_cmd=`tail -f ${log_file}`
+    echo "You can now using the following cmd to show running logs:"
+    echo "${tail_cmd}"
+    echo "You can also using the following cmd (or other similar cmd) to show running pid:"
+    echo "ps -aux|grep ichosengpt"
 else
     echo "===> WARNING! Please specify the task!"
 fi

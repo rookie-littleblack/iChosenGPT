@@ -13,6 +13,7 @@
 #             export ICHOSEN_PT_DATAS_NAME=XXX    # Dataset name
 #             export ICHOSEN_PT_MODEL_PORT=XXX    # Web port
 #             export ICHOSEN_PT_NUM_EPOCHS=XXX    # Number of epoches!
+#             export ICHOSEN_PT_BATCH_SIZE=XXX    # Number of batch size!
 #             export ICHOSEN_PT_CONF_ACCEL=XXX    # Config file for accelerate (if need)!
 #############################################################################################
 #!/bin/bash
@@ -53,6 +54,10 @@ fi
 if [ -z "${ICHOSEN_PT_NUM_EPOCHS}" ]; then
     echo "Warning: Environment variable 'ICHOSEN_PT_NUM_EPOCHS' is not set. Default value '3.0' is set."
     ICHOSEN_PT_NUM_EPOCHS=3.0
+fi
+if [ -z "${ICHOSEN_PT_BATCH_SIZE}" ]; then
+    echo "Warning: Environment variable 'ICHOSEN_PT_BATCH_SIZE' is not set. Default value '4' is set."
+    ICHOSEN_PT_BATCH_SIZE=4
 fi
 
 
@@ -114,7 +119,7 @@ CMD_PT=`echo "${CMD_PT_BASIC} ${ICHOSEN_PT_SCRIPT_TRAIN} \
 --lora_target all \
 --output_dir ${ICHOSEN_PT_ODIR_CKPOT} \
 --overwrite_cache \
---per_device_train_batch_size 4 \
+--per_device_train_batch_size ${ICHOSEN_PT_BATCH_SIZE} \
 --gradient_accumulation_steps 4 \
 --lr_scheduler_type cosine \
 --logging_steps 10 \
