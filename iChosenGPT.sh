@@ -15,20 +15,6 @@ export ICHOSEN_ROOT_PATH=/work/20231103-0935_ChosenGPT
 export ICHOSEN_LOGS_PATH=${ICHOSEN_ROOT_PATH}/logs
 export ICHOSEN_LOGS_PREF=${ICHOSEN_LOGS_PATH}/$(date "+%Y%m%d-%H%M%S")_running
 
-# export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B
-# #export ICHOSEN_MODEL_CKPT=/work/20231103-0935_ChosenGPT/out/20231104-0949_20231103-0935_ChosenGPT_PT
-# export ICHOSEN_MODEL_TEMP=chatglm3
-
-# export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231106-1104_Llama-2-70b-chat-hf
-# export ICHOSEN_MODEL_TEMP=llama2
-
-export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231106-1533_Llama2-Chinese-13b-Chat
-export ICHOSEN_MODEL_TEMP=llama2
-
-# export ICHOSEN_MODEL_CHAT=/work/20231103-0935_ChosenGPT/out/20231108-1520_20231103-0935_ChosenGPT_PT_model
-# export ICHOSEN_MODEL_TEMP=llama2
-
-
 
 # ##########################################
 # ### Dependence Installation (optional)!
@@ -62,9 +48,18 @@ elif [ "$1" == "gradio" ]; then
     echo "===> Initiate Web - gradio version!"
     ##########################################
     ### Initiate Web - gradio version!
+    export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B
+    export ICHOSEN_MODEL_TEMP=chatglm3
+    # #-----------------------------------
+    # export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231106-1104_Llama-2-70b-chat-hf
+    # export ICHOSEN_MODEL_TEMP=llama2
+    # #-----------------------------------
+    # export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231106-1533_Llama2-Chinese-13b-Chat
+    # export ICHOSEN_MODEL_TEMP=llama2
+
     export ICHOSEN_GRA_MODEL_PATH=${ICHOSEN_MODEL_CHAT}
-    export ICHOSEN_GRA_MODEL_CKPT=${ICHOSEN_MODEL_CKPT}
     export ICHOSEN_GRA_MODEL_TEMP=${ICHOSEN_MODEL_TEMP}
+    #export ICHOSEN_GRA_MODEL_CKPT=/work/20231103-0935_ChosenGPT/out/XXX
     export ICHOSEN_GRA_CUDA_VISIB="4,5,6,7"
     export ICHOSEN_GRA_MODEL_PORT=6722
 
@@ -82,8 +77,12 @@ elif [ "$1" == "streamlit" ]; then
     ##########################################
     ### Initiate Web - streamlit version!
     # For ChatGLM3!
+    export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B
+    export ICHOSEN_MODEL_TEMP=chatglm3
+
     export ICHOSEN_WEB_MODEL_PATH=${ICHOSEN_MODEL_CHAT}
-    export ICHOSEN_WEB_CUDA_VISIB="4,5,6,7"
+    #export ICHOSEN_WEB_CUDA_VISIB="4,5,6,7"
+    export ICHOSEN_WEB_CUDA_VISIB="1,2,3"
     export ICHOSEN_WEB_MODEL_PORT=6723
 
     export ICHOSEN_WEB_MODEL=${ICHOSEN_WEB_MODEL_PATH}
@@ -95,6 +94,9 @@ elif [ "$1" == "tools" ]; then
     ##########################################
     ### Initiate Tools - streamlit version!
     # For ChatGLM3!
+    export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B
+    export ICHOSEN_MODEL_TEMP=chatglm3
+
     export ICHOSEN_TOOLS_MODEL_PATH=${ICHOSEN_MODEL_CHAT}
     export ICHOSEN_TOOLS_CUDA_VISIB="4,5,6,7"
     export ICHOSEN_TOOLS_MODEL_PORT=6724
@@ -107,6 +109,15 @@ elif [ "$1" == "pt_single" ]; then
     echo "===> Pre-Training LLM - Single GPU!"
     ##########################################
     ### Pre-Training LLM - Single GPU!
+    export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B
+    export ICHOSEN_MODEL_TEMP=chatglm3
+    # #-----------------------------------
+    # export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231106-1104_Llama-2-70b-chat-hf
+    # export ICHOSEN_MODEL_TEMP=llama2
+    # #-----------------------------------
+    # export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231106-1533_Llama2-Chinese-13b-Chat
+    # export ICHOSEN_MODEL_TEMP=llama2
+
     export ICHOSEN_PT_MODEL_PATH=${ICHOSEN_MODEL_CHAT}
     export ICHOSEN_PT_MODEL_TEMP=${ICHOSEN_MODEL_TEMP}
     export ICHOSEN_PT_CUDA_VISIB=7
@@ -127,6 +138,15 @@ elif [ "$1" == "pt_multi" ]; then
     echo "===> Pre-Training LLM - Multi-GPUs!"
     ##########################################
     ### Pre-Training LLM - Multi-GPUs!
+    export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231101-2103_ChatGLM3-6B
+    export ICHOSEN_MODEL_TEMP=chatglm3
+    # #-----------------------------------
+    # export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231106-1104_Llama-2-70b-chat-hf
+    # export ICHOSEN_MODEL_TEMP=llama2
+    # #-----------------------------------
+    # export ICHOSEN_MODEL_CHAT=/work/20230915-0759_GPT/20230915-0900_OS_LLMs/20231106-1533_Llama2-Chinese-13b-Chat
+    # export ICHOSEN_MODEL_TEMP=llama2
+
     export ICHOSEN_PT_MODEL_PATH=${ICHOSEN_MODEL_CHAT}
     export ICHOSEN_PT_MODEL_TEMP=${ICHOSEN_MODEL_TEMP}
     export ICHOSEN_PT_CUDA_VISIB="4,5,6,7"
