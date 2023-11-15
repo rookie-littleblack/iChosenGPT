@@ -1,3 +1,4 @@
+# DO NOT add any comments in the css setting!
 CSS = r"""
 .modal-box {
   position: fixed !important;
@@ -35,5 +36,10 @@ CSS = r"""
 
 footer{
   display: none !important;
+}
+
+.chatbot{
+  user-select: text !important;
+  cursor: text !important;
 }
 """

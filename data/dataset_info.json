@@ -8,6 +8,15 @@
       "history": ""
     }
   },
+  "cnic_ichosengpt_corpus_text_dailymed_all": {
+    "file_name": "/work1/ydy/project/qx/Datasets/D01_DailyMed/ichosengpt_corpus_text_dailymed_all.txt",
+    "columns": {
+      "prompt": "text",
+      "query": "",
+      "response": "",
+      "history": ""
+    }
+  },
   "ichosengpt_corpus_text_chosenmed": {
     "file_name": "/work/20230921-1745_Dataset/20231016-1119_Dataset04_qx-construct-chosengpt-01/qx_corpus_chosenmed_qa_for_glm3.json"
   },
