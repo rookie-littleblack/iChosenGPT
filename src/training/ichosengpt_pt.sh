@@ -79,9 +79,11 @@ esac
 
 # Variables!
 ICHOSEN_PT_TIMESTAMP=$(date "+%Y%m%d-%H%M")
+#ICHOSEN_PT_TIMESTAMP="20231109-1348" # 2023-11-16: 接上上次没有跑完的！
 ICHOSEN_PT_NAME_MODEL=$(basename "${ICHOSEN_ROOT_PATH}")
 ICHOSEN_PT_ODIR_CKPOT=${ICHOSEN_ROOT_PATH}/out/${ICHOSEN_PT_TIMESTAMP}_${ICHOSEN_PT_NAME_MODEL}_PT
 ICHOSEN_PT_ODIR_MODEL=${ICHOSEN_PT_ODIR_CKPOT}_model
+ICHOSEN_PT_ODIR_CACHE=${ICHOSEN_PT_ODIR_CKPOT}_cache
 
 ICHOSEN_PT_SCRIPT_TRAIN=${ICHOSEN_ROOT_PATH}/factory/ichosengpt_train.py
 ICHOSEN_PT_SCRIPT_EXPOT=${ICHOSEN_ROOT_PATH}/factory/export_model.py
@@ -129,7 +131,8 @@ CMD_PT=`echo "${CMD_PT_BASIC} ${ICHOSEN_PT_SCRIPT_TRAIN} \
 --plot_loss \
 --fp16 \
 --overwrite_output_dir \
---template ${ICHOSEN_PT_MODEL_TEMP}"`
+--template ${ICHOSEN_PT_MODEL_TEMP} \
+--cache_path ${ICHOSEN_PT_ODIR_CACHE}"`
 echo "===> Pre-training command: '${CMD_PT}'..."
 eval ${CMD_PT}
 RESULT_CMD_PT=$?
