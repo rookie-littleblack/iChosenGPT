@@ -1,4 +1,4 @@
-# iChosenGPT
+# 臻慧聊（iChosenGPT）
 
 臻慧聊（iChosenGPT）项目 GitHub 官网网站。
 
@@ -25,6 +25,8 @@
 - [Section003: 性能优化](blogs/optimization)
 
 - [Section004: 检索增强生成（RAG）](blogs/rag)
+
+- [Section005: 其他](blogs/others)
 
 
 ## 产品文档
