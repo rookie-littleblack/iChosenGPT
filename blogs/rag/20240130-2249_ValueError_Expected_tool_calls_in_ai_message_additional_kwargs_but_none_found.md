@@ -10,13 +10,13 @@
 
 - 网络各种搜索，包括Llama-Index文档，以及 GitHub issues，还有 Google，都没有搜到能完全解决问题的答案，但是 issue 中有人提到这个：
 
-    <img src="imgs/企业微信截图_17068591501302.png" width="750" />
+    <img src="imgs/17068591501302.png" width="100%" />
 
 - 看完依然不知所云，不知道这个用在哪里；
 
 - 继续查看 SubQuestionQueryEngine 相关代码：
 
-    <img src="imgs/企业微信截图_17068586389234.png" width="750" />
+    <img src="imgs/17068586389234.png" width="100%" />
 
 - OK，那就来试试：
 
