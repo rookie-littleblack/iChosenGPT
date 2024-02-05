@@ -15,10 +15,10 @@ from llama_index import VectorStoreIndex, download_loader
 #####################
 # Environment setting
 os.environ['OPENAI_API_BASE'] = 'https://igptapi.chosenmedinfo.com/v1'
-os.environ['OPENAI_API_KEY'] = 'XXXXXX'  # 从 [iChosenGPT-API](https://igptapi.chosenmedinfo.com) 平台获取！
+os.environ['OPENAI_API_KEY'] = 'XXXXXX'  # 从 iChosenGPT-API 平台（https://igptapi.chosenmedinfo.com）获取！
 
 # os.environ['OPENAI_API_BASE'] = 'https://api.openai.com/v1'
-# os.environ['OPENAI_API_KEY'] = 'XXXXXX'  # 从[OpenAI官网](https://platform.openai.com/api-keys)获取！
+# os.environ['OPENAI_API_KEY'] = 'XXXXXX'  # 从 OpenAI 官网（https://platform.openai.com/api-keys）获取！
 
 #############
 # Data loader
@@ -59,8 +59,7 @@ query_string4 = "求臻医学首席科学家是谁？详细介绍一下他。"
 response4 = query_engine.query(query_string4)
 print(f"Q4: {query_string4}\nA4: {str(response4)}\n{ichosengpt_splitter}")
 
-
-query_string5 = "求臻医学截至目前发表了多少论文？"
+query_string5 = "求臻医学截至目前发表了多少论文，发表在了哪些期刊？"
 response5 = query_engine.query(query_string5)
 print(f"Q5: {query_string5}\nA5: {str(response5)}\n{ichosengpt_splitter}")
 ```
