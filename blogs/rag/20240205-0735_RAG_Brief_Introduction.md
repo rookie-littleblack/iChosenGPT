@@ -11,9 +11,6 @@
 
 import os
 
-os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
-os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-
 # os.environ['OPENAI_API_BASE'] = 'https://igptapi.chosenmedinfo.com/v1'
 # os.environ['OPENAI_API_KEY'] = 'XXXXXX'  # 从 [iChosenGPT-API](https://igptapi.chosenmedinfo.com) 平台获取！
 
