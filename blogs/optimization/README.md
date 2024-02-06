@@ -2,3 +2,4 @@
 
 ## 推理优化框架
 1. [大模型时代的硬件困境 —— llama.cpp的解决方案](./article/大模型时代的硬件困境_llama.cpp的解决方案.md)
+2. [llama.cpp的编译安装](./article/llama.cpp的编译安装.md)
