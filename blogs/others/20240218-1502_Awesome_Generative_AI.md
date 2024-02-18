@@ -8,6 +8,7 @@
 
 ### 模型
 
+- [iChosenGPT API](https://igptapi.chosenmedinfo.com) - iChosenGPT 的 API 提供对 iChosenGPT-LLMs 模型的访问，这些模型执行各种自然语言任务。
 - [OpenAI API](https://openai.com/api/) - OpenAI的API提供对GPT-3和GPT-4模型的访问，这些模型执行各种自然语言任务，以及将自然语言转换为代码的Codex。
 - [Gopher](https://www.deepmind.com/blog/language-modelling-at-scale-gopher-ethical-considerations-and-retrieval) - DeepMind的Gopher是一个2800亿参数的语言模型。
 - [OPT](https://huggingface.co/facebook/opt-350m) - Facebook的开放预训练变换器（OPT）是一套解码器仅预训练变换器。
