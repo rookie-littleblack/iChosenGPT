@@ -8,7 +8,7 @@
 
 ### 模型
 
-- [iChosenGPT API](https://igptapi.chosenmedinfo.com) - iChosenGPT 的 API 提供对 iChosenGPT-LLMs 模型的访问，这些模型执行各种自然语言任务。
+- [iChosenGPT-API](https://igptapi.chosenmedinfo.com) - iChosenGPT 的 API 提供对 iChosenGPT-LLMs 模型的访问，这些模型执行各种自然语言任务。
 - [OpenAI API](https://openai.com/api/) - OpenAI的API提供对GPT-3和GPT-4模型的访问，这些模型执行各种自然语言任务，以及将自然语言转换为代码的Codex。
 - [Gopher](https://www.deepmind.com/blog/language-modelling-at-scale-gopher-ethical-considerations-and-retrieval) - DeepMind的Gopher是一个2800亿参数的语言模型。
 - [OPT](https://huggingface.co/facebook/opt-350m) - Facebook的开放预训练变换器（OPT）是一套解码器仅预训练变换器。
@@ -18,6 +18,9 @@
 - [Claude 2](https://claude.ai/) - 与Claude对话，Anthropic的AI助手。
 - [Vicuna-13B](https://lmsys.org/blog/2023-03-30-vicuna/) - 通过在ShareGPT收集的用户共享对话上微调LLaMA训练的开源聊天机器人。
 - [Mixtral 8x7B](https://mistral.ai/news/mixtral-of-experts/) - 一个具有开放权重的高质量稀疏专家混合模型。
+- [MiniGPT-4](https://minigpt-4.github.io/) - MiniGPT-4是一个具有图像理解能力的开源聊天机器人，基于 Vicuna-13B LLM 和 BLIP-2视觉语言模型。可以描述图像或回答有关图像内容的问题，还可以根据手绘网页草图生成匹配的 HTML 代码。
+- [Qwen](https://github.com/QwenLM/Qwen) - 通义千问，是阿里云推出的一个超大规模的语言模型，功能包括多轮对话、文案创作、逻辑推理、多模态理解、多语言支持。能够跟人类进行多轮的交互，也融入了多模态的知识理解，且有文案创作能力，能够续写小说，编写邮件等。
+- [Yi](https://www.01.ai/) - Yi系列模型是由01.AI从头开始训练的下一代开源大型语言模型。
 
 ### 聊天机器人
 
