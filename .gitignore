@@ -1,4 +1,6 @@
 # Environments
 .env
+
+# Others
 .vs
 .idea
