@@ -16,7 +16,7 @@
 
    <img src="imgs/ichosengpt_api_qrcode.png" width="150" height="150" />
 
-- 臻慧聊（iChosenGPT）公众号：
+- 臻慧聊（iChosenGPT）公众号 - 大语言模型技术进展：
 
     <img src="imgs/ichosengpt_webchatoa_qrcode.jpg" width="150" height="150" />
 
