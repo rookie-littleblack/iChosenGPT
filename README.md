@@ -4,7 +4,11 @@
 
 ## 相关站点：
 
-- 臻慧聊（iChosenGPT）官方网站：https://igptweb.chosenmedinfo.com
+- 臻慧聊（iChosenGPT）官方网站：https://igpthome.chosenmedinfo.com
+
+   <img src="imgs/ichosengpt_home_qrcode.png" width="150" height="150" />
+
+- 臻慧聊（iChosenGPT）在线平台：https://igptweb.chosenmedinfo.com
 
    <img src="imgs/ichosengpt_web_qrcode.png" width="150" height="150" />
 
