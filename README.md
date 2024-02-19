@@ -14,6 +14,8 @@
 
 - 臻慧聊（iChosenGPT）接口管理网站：https://igptapi.chosenmedinfo.com
 
+   <img src="imgs/ichosengpt_api_qrcode.png" width="150" height="150" />
+
 - 臻慧聊（iChosenGPT）公众号：
 
     <img src="imgs/ichosengpt_webchatoa_qrcode.jpg" width="150" height="150" />
