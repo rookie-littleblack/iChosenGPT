@@ -298,7 +298,7 @@
 - [分子设计](https://github.com/AspirinCode/papers-for-molecular-design-using-DL) - 使用生成式AI和深度学习进行分子设计的列表。
 - [开放LLMs](https://github.com/eugeneyan/open-llms) - 可用于商业用途的开放LLM列表。
 
-### 关于ChatGPT的列表
+### 关于 ChatGPT 的列表
 
 - [Awesome ChatGPT](https://github.com/humanloop/awesome-chatgpt) - 由[@jordn](https://github.com/jordn)创建的ChatGPT和GPT-3的精选工具、演示、文档列表。
 - [Awesome ChatGPT Prompts](https://github.com/f/awesome-chatgpt-prompts) - 用于与ChatGPT模型一起使用的提示示例的集合。
