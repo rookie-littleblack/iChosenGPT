@@ -12,9 +12,13 @@
 
    <img src="imgs/ichosengpt_web_qrcode.png" width="150" height="150" />
 
-- 臻慧聊（iChosenGPT）接口管理网站：https://igptapi.chosenmedinfo.com
+- 臻慧聊（iChosenGPT）接口平台：https://igptapi.chosenmedinfo.com
 
    <img src="imgs/ichosengpt_api_qrcode.png" width="150" height="150" />
+
+- 臻慧聊（iChosenGPT）GitHub：https://github.com/rookie-littleblack/iChosenGPT
+
+   <img src="imgs/ichosengpt_github_qrcode.png" width="150" height="150" />
 
 - 臻慧聊（iChosenGPT）公众号 - 大语言模型技术进展：
 

@@ -11,7 +11,7 @@
 - [iChosenGPT-API](https://igptapi.chosenmedinfo.com) - iChosenGPT 的 API 提供对 iChosenGPT-LLMs 模型的访问，这些模型执行各种自然语言任务。
 - [OpenAI API](https://openai.com/api/) - OpenAI的API提供对GPT-3和GPT-4模型的访问，这些模型执行各种自然语言任务，以及将自然语言转换为代码的Codex。
 - [Gopher](https://www.deepmind.com/blog/language-modelling-at-scale-gopher-ethical-considerations-and-retrieval) - DeepMind的Gopher是一个2800亿参数的语言模型。
-- [OPT](https://huggingface.co/facebook/opt-350m) - Facebook的开放预训练变换器（OPT）是一套解码器仅预训练变换器。
+- [OPT](https://huggingface.co/facebook/opt-350m) - Facebook的开放预训练变换器（OPT）是一套解码器及预训练变换器。
 - [Bloom](https://huggingface.co/docs/transformers/model_doc/bloom) - Hugging Face的BLOOM是一个类似于GPT-3的模型，已在46种不同语言和13种编程语言上进行了训练。#开源
 - [LLaMA](https://ai.facebook.com/blog/large-language-model-llama-meta-ai/) - Meta的一个基础的、650亿参数的大型语言模型。#开源
 - [Llama 2](https://ai.meta.com/llama/) - Meta开源大型语言模型的下一代。#开源
@@ -65,6 +65,7 @@
 - [Copysmith](https://copysmith.ai/) - 面向企业和电子商务的AI内容创建解决方案。
 
 ### ChatGPT扩展
+
 - [WebChatGPT](https://chrome.google.com/webstore/detail/webchatgpt-chatgpt-with-i/lpfemeioodjbpieminkklglpmhlngfcn) - 使用来自网络的相关结果增强你的ChatGPT提示。
 - [GPT for Sheets and Docs](https://workspace.google.com/marketplace/app/gpt_for_sheets_and_docs/677318054654) - Google Sheets和Google Docs的ChatGPT扩展。
 - [YouTube Summary with ChatGPT](https://chrome.google.com/webstore/detail/youtube-summary-with-chat/nmmicjeknamkfloonkhhcjmomieiodli) - 使用ChatGPT总结YouTube视频。
