@@ -62,12 +62,12 @@
 
 ## 相关资料
 
-[1]. [央广网：第一观察｜习近平总书记首次提到“新质生产力”](https://news.cnr.cn/native/gd/sz/20230912/t20230912_526416651.shtml)
+- [央广网：第一观察｜习近平总书记首次提到“新质生产力”](https://news.cnr.cn/native/gd/sz/20230912/t20230912_526416651.shtml)
 
-[2]. Singhal K, Azizi S, Tu T, et al. Large language models encode clinical knowledge[J]. Nature, 2023, 620(7972): 172-180.
+- Singhal K, Azizi S, Tu T, et al. Large language models encode clinical knowledge[J]. Nature, 2023, 620(7972): 172-180.
 
-[3]. 2023医疗健康AI大模型行业研究报告
+- 2023医疗健康AI大模型行业研究报告
 
-[4]. [人工智能大模型赋能医疗健康产业白皮书](https://download.wezhan.cn/contents/sitefiles2032/10161022/files/754040..pdf?response-content-disposition=inline%3Bfilename%3D%25e4%25ba%25ba%25e5%25b7%25a5%25e6%2599%25ba%25e8%2583%25bd%25e5%25a4%25a7%25e6%25a8%25a1%25e5%259e%258b%25e8%25b5%258b%25e8%2583%25bd%25e5%258c%25bb%25e7%2596%2597%25e5%2581%25a5%25e5%25ba%25b7%25e4%25ba%25a7%25e4%25b8%259a%25e7%2599%25bd%25e7%259a%25ae%25e4%25b9%25a6%25ef%25bc%25882023%25ef%25bc%2589-f2%25e2%2588%259a.pdf&response-content-type=application%2Fpdf&auth_key=1709027414-ea108869deb34109b2499c981651186d-0-c7ad8676cbc9eba7f3a7792af7f45acf)
+- [人工智能大模型赋能医疗健康产业白皮书](https://download.wezhan.cn/contents/sitefiles2032/10161022/files/754040..pdf?response-content-disposition=inline%3Bfilename%3D%25e4%25ba%25ba%25e5%25b7%25a5%25e6%2599%25ba%25e8%2583%25bd%25e5%25a4%25a7%25e6%25a8%25a1%25e5%259e%258b%25e8%25b5%258b%25e8%2583%25bd%25e5%258c%25bb%25e7%2596%2597%25e5%2581%25a5%25e5%25ba%25b7%25e4%25ba%25a7%25e4%25b8%259a%25e7%2599%25bd%25e7%259a%25ae%25e4%25b9%25a6%25ef%25bc%25882023%25ef%25bc%2589-f2%25e2%2588%259a.pdf&response-content-type=application%2Fpdf&auth_key=1709027414-ea108869deb34109b2499c981651186d-0-c7ad8676cbc9eba7f3a7792af7f45acf)
 
-[5] iChosenGPT 官网：https://igpthome.chosenmedinfo.com
+- iChosenGPT 官网：https://igpthome.chosenmedinfo.com
