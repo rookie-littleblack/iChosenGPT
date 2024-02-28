@@ -385,7 +385,7 @@ query_engine = index.as_query_engine(
 
 在高级 RAG 管道中添加重排器只需三个简单步骤：
 
-- 首先，定义 reranker 模型。在这里，我们使用的是 Hugging Face 中的 BAAI/bge-ranker-base 模型。
+- 首先，定义 reranker 模型。在这里，我们使用的是 Hugging Face 中的 BAAI/bge-ranker-large 模型。
 
 - 在查询引擎中，将 reranker 模型添加到 node_postprocessors 列表中。
 
