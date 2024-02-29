@@ -6,4 +6,4 @@
 
 - [大模型实战 | 手把手教你拥有最小但最强的开源对话模型：Gemma](20240223-1546_LLM_Practice_001.md)
 
-- [观点 | 医疗健康AI的历程、现状及展望](20240228-1755_MedAI_History_Current_Future_001.md)
+- [观点 | 医疗健康 AI 的新纪元：走向智能化医疗的未来](20240228-1755_MedAI_History_Current_Future_001.md)
