@@ -10,7 +10,7 @@ RAG 的核心理念是向 LLM 注入上下文（或知识），从而获得更�
 
 在这篇博客文章中，我们将介绍新扩展库的主要类，并向您展示只需几行代码，就可以使您的 QueryEngine 准备好作为 RAG 网络的一部分进行贡献。我们还将分享关于在这个 LLM 的新时代，数据供应商如何实际向消费者提供数据的想法。
 
-**术语说明：**在这篇文章中，我们使用 llama-index-networks 指代实际的扩展，而 llama-index[networks] 指代带有 llama-index-networks 扩展的 llama-index 的安装。
+术语说明：在这篇文章中，我们使用 llama-index-networks 指代实际的扩展，而 llama-index[networks] 指代带有 llama-index-networks 扩展的 llama-index 的安装。
 
 ## Alex, Beth, 和 Bob 的故事
 
