@@ -219,7 +219,7 @@ POST byte-image-index/_search
 
 ## 完整实战示例：
 
-前面有一篇（）我们介绍了 Elasticsearch 的安装。这里我们将用到那个数据库。
+前面有一篇（https://github.com/rookie-littleblack/iChosenGPT/blob/master/blogs/rag/20240210-2213_The_Role_of_Vector_Db_In_RAG.md）我们介绍了 Elasticsearch 的安装。这里我们将用到那个数据库。
 
 基础环境准备：
 
