@@ -13,3 +13,5 @@
 - [RAG实战之二：LlamaIndex Networks 实战](20240228-0845_LlamaIndex_Networks_Practice.md)
 
 - [RAG实战之三：使用 BAAI/bge-reranker 增强 RAG](20240306-1509_Enhancing_Rag_With_BAAI_bge_reranker.md)
+
+- [RAG实战之四：基于 Elasticsearch 的混合检索](20240313-1840_ES_Based_Hybrid_Retriever.md)
