@@ -36,7 +36,9 @@
 
 - [Section004: 检索增强生成（RAG）](blogs/rag)
 
-- [Section005: 其他](blogs/others)
+- [Section005: 文献阅读](blogs/literature)
+
+- [Section006: 其他](blogs/others)
 
 
 ## 产品文档
