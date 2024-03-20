@@ -15,3 +15,5 @@
 - [RAG实战之三：使用 BAAI/bge-reranker 增强 RAG](20240306-1509_Enhancing_Rag_With_BAAI_bge_reranker.md)
 
 - [RAG实战之四：基于 Elasticsearch 的混合检索](20240313-1840_ES_Based_Hybrid_Retriever.md)
+
+- [RAG实战之五：基于 dialoqbase 搭建你自己的私域知识库问答系统](20240320-1616_Build_Your_Own_Private_RAG_System.md)
