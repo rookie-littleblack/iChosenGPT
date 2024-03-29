@@ -36,7 +36,7 @@
 
 - [Section004: 检索增强生成（RAG）](blogs/rag)
 
-- [Section005: 文献阅读](blogs/literature)
+- [Section005: 文献分享](blogs/literature)
 
 - [Section006: 开源速递](blogs/osexpress)
 
