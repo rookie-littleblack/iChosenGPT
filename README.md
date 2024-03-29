@@ -38,7 +38,9 @@
 
 - [Section005: 文献阅读](blogs/literature)
 
-- [Section006: 其他](blogs/others)
+- [Section006: 开源速递](blogs/osexpress)
+
+- [Section007: 其他](blogs/others)
 
 
 ## 产品文档
