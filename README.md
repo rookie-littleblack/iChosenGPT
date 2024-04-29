@@ -1,6 +1,6 @@
 # 臻慧聊（iChosenGPT）
 
-臻慧聊（iChosenGPT）项目 GitHub 官网网站。
+臻慧聊（iChosenGPT）项目 GitHub 官方网站。
 
 ## 相关站点：
 
